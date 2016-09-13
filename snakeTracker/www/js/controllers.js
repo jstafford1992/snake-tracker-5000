@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('starter.controllers', [])
+angular.module('snekTrakr.controllers', [])
 
 .controller('loginCtrl', function($scope) {
 

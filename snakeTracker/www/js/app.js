@@ -1,11 +1,11 @@
-// Ionic Starter App
+// Ionic snekTrakr App
 'use strict';
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'snekTrakr' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+// 'snekTrakr.services' is found in services.js
+// 'snekTrakr.controllers' is found in controllers.js
+angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -63,7 +63,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/chats/:chatId',
       views: {
         'tab-chats': {
-          templateUrl: 'templates/snake-detail.html',
+          templateUrl: 'templates/snake-details.html',
           controller: 'ChatDetailCtrl'
         }
       }
