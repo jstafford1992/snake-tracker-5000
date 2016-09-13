@@ -59,7 +59,7 @@ angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.servic
         }
       }
     })
-    .state('tab.chat-detail', {
+    .state('tab.snake-details', {
       url: '/snakesList/:snakesId',
       views: {
         'snakesList': {
@@ -72,9 +72,19 @@ angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.servic
   .state('tab.account', {
     url: '/account',
     views: {
-      'tab-account': {
+      'account': {
         templateUrl: 'templates/account.html',
         controller: 'AccountCtrl'
+      }
+    }
+  })
+
+  .state('tab.add-snake', {
+    url: '/snakesList/new',
+    views: {
+      'add-snake': {
+        templateUrl: 'templates/add-snake.html',
+        controller: 'addSnakeCtrl'
       }
     }
   });

@@ -58,6 +58,9 @@ angular.module('snekTrakr.controllers', [])
 
 .controller('snakesDetailsCtrl', function($scope, $stateParams) {
   // $scope.chat = snakesList.get($stateParams.chatId);
+  var vm = this;
+  vm.message = "This is the Snake Details page Controller Message";
+
 })
 
 .controller('AccountCtrl', function($scope) {
@@ -68,4 +71,16 @@ angular.module('snekTrakr.controllers', [])
   var vm = this;
   vm.message = "This is the Controller for the Account page";
 
+})
+
+.controller('addSnakeCtrl', function($scope){
+  var vm = this;
+  vm.message = "ADD A NEW SNAKE!";
+
+
+})
+
+.controller('editSnakeCtrl', function($scope){
+  var vm = this;
+  vm.message = "EDIT SNAKE";
 });
