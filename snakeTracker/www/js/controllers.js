@@ -46,9 +46,9 @@ angular.module('snekTrakr.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  // $scope.chats = Chats.all();
+  // $scope.snakesList = snakesList.all();
   // $scope.remove = function(chat) {
-  //   Chats.remove(chat);
+  //   snakesList.remove(chat);
   // };
 
   var vm = this;
@@ -56,8 +56,8 @@ angular.module('snekTrakr.controllers', [])
 
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams) {
-  // $scope.chat = Chats.get($stateParams.chatId);
+.controller('snakesDetailsCtrl', function($scope, $stateParams) {
+  // $scope.chat = snakesList.get($stateParams.chatId);
 })
 
 .controller('AccountCtrl', function($scope) {

@@ -40,31 +40,31 @@ angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.servic
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.login', {
+    url: '/login',
     views: {
-      'tab-dash': {
+      'login': {
         templateUrl: 'templates/login.html',
         controller: 'loginCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.snakesList', {
+      url: '/snakesList',
       views: {
-        'tab-chats': {
+        'snakesList': {
           templateUrl: 'templates/snakes-list.html',
           controller: 'snakesCtrl'
         }
       }
     })
     .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+      url: '/snakesList/:snakesId',
       views: {
-        'tab-chats': {
+        'snakesList': {
           templateUrl: 'templates/snake-details.html',
-          controller: 'ChatDetailCtrl'
+          controller: 'snakesDetailsCtrl'
         }
       }
     })
@@ -80,6 +80,6 @@ angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.servic
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/login');
 
 });
