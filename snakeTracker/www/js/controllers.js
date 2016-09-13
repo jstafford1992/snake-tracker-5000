@@ -2,7 +2,7 @@
 
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('loginCtrl', function($scope) {
 
 //   $scope.scan = function() {
 //   cordova.plugins.barcodeScanner.scan(
@@ -33,11 +33,11 @@ angular.module('starter.controllers', [])
 
   var vm = this;
 
-  vm.message = "This is the Controller for the tab-dash page"
+  vm.message = "This is the Controller for the login page"
 
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('snakesCtrl', function($scope) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -46,18 +46,26 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+  // $scope.chats = Chats.all();
+  // $scope.remove = function(chat) {
+  //   Chats.remove(chat);
+  // };
+
+  var vm = this;
+  vm.message = "This is the Controller for the snakes-list page";
+
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('ChatDetailCtrl', function($scope, $stateParams) {
+  // $scope.chat = Chats.get($stateParams.chatId);
 })
 
 .controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+  // $scope.settings = {
+  //   enableFriends: true
+  // };
+
+  var vm = this;
+  vm.message = "This is the Controller for the Account page";
+
 });
