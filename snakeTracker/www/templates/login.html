@@ -2,17 +2,21 @@
   <ion-content class="padding">
     <h2>SNEKTRAKR5000</h2>
 
-    <h3>Message: {{lc.message}}</h3>
+    <div class="card rounded padding" style="background-color: #1DE7A0;">
+      <label for="email">LOGIN</label>
+      <input type="text" name="email" value="" placeholder="Email">
+      <label for="password">PASSWORD</label>
+      <input type="password" name="password" value="" placeholder="Password">
+      <br>
+      <button type="button" name="login">Login</button>
+      <button type="button" name="signup">Not a member?</button>
+    </div>
 
-    <p>
-      This is the home page Will become Login
-    </p>
     <p>
       If logged in Would like to route to snakes listing page
     </p>
-    <p>
-      
-    </p>
+
+    <h4>Message: {{lc.message}}</h4>
     <p>
       For help sending push notifications, join the <a href="https://apps.ionic.io/signup" target="_blank">Ionic Platform</a> and check out <a href="http://docs.ionic.io/docs/push-overview" target="_blank">Ionic Push</a>. We also have other services available.
     </p>

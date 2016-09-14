@@ -79,12 +79,12 @@ angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.servic
     }
   })
 
-  .state('tab.add-snake', {
-    url: '/snakesList/new',
+  .state('tab.clutches', {
+    url: '/clutches',
     views: {
-      'add-snake': {
-        templateUrl: 'templates/add-snake.html',
-        controller: 'addSnakeCtrl'
+      'clutches': {
+        templateUrl: 'templates/clutches.html',
+        controller: 'clutchesCtrl'
       }
     }
   });

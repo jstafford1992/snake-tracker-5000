@@ -33,7 +33,7 @@ angular.module('snekTrakr.controllers', [])
 
   var vm = this;
 
-  vm.message = "This is the Controller for the login page"
+  vm.message = "This is the Controller for the login page";
 
 })
 
@@ -83,4 +83,19 @@ angular.module('snekTrakr.controllers', [])
 .controller('editSnakeCtrl', function($scope){
   var vm = this;
   vm.message = "EDIT SNAKE";
+})
+
+.controller('clutchesCtrl', function(){
+  var vm = this;
+  vm.message = "LIST CLUTCHES";
+})
+
+.controller('addClutchCtrl', function() {
+  var vm = this;
+  vm.message = "ADD CLUTCH";
+})
+
+.controller('editClutchCtrl', function() {
+  var vm = this;
+  vm.message = 'EDIT CLUTCH';
 });
