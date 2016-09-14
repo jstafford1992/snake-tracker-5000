@@ -1,7 +1,18 @@
 <ion-view view-title="Add Clutch" ng-controller="addClutchCtrl as acc">
   <ion-content class="padding">
-    <h1>Add Clutch DETAILS HERE</h1>
     <h3>{{acc.message}}</h3>
-
+    <h1>Add Clutch DETAILS HERE</h1>
+    <form class="" action="/clutches/add" method="post">
+      <input type="id" name="dame" value="" placeholder="Dame">
+      <input type="date" name="date_layed" value="" placeholder="Date Layed">
+      <input type="textarea" name="notes" value="" placeholder="Notes">
+      <label for="eggs_layed">Number of Eggs Layed</label>
+      <input type="number" name="eggs_layed" value="">
+      <label for="bad_eggs">Infertile Eggs</label>
+      <input type="number" name="bad_eggs" value="">
+      <label for="Number of Eggs Hatched">Eggs Hatched</label>
+      <input type="number" name="eggs_hatched" value="">
+      <button type="submit" name="submit">Add New Clutch</button>
+    </form>
   </ion-content>
 </ion-view>

@@ -3,5 +3,14 @@
     <h1>This will be the Edit account page.</h1>
     <h2>Will enable/disable notifications and accessibility</h2>
     <h3>{{ac.message}}</h3>
+
+    <button type="button" name="edit" ng-click="ac.showEdit()">Edit Account</button>
+
+    <form class="" action="/" method="post" ng-show="ac.edit">
+      <input type="email" name="email" value="" placeholder="Email" ng-model="ac.email">
+      <input type="password" name="password" value="" placeholder="Password" ng-model="ac.password">
+      <input type="password" name="password" value="" placeholder="Confirm Password" ng-model="ac.confirmPassword">
+      <button type="submit" name="update">Update Account</button>
+    </form>
   </ion-content>
 </ion-view>

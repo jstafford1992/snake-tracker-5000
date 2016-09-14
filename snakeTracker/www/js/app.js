@@ -45,7 +45,8 @@ angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.servic
     views: {
       'login': {
         templateUrl: 'templates/login.html',
-        controller: 'loginCtrl'
+        controller: 'loginCtrl',
+        controllerAs: 'lc'
       }
     }
   })
@@ -55,7 +56,8 @@ angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.servic
       views: {
         'snakesList': {
           templateUrl: 'templates/snakes-list.html',
-          controller: 'snakesCtrl'
+          controller: 'snakesCtrl',
+          controllerAs: 'sc'
         }
       }
     })
@@ -64,7 +66,8 @@ angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.servic
       views: {
         'snakesList': {
           templateUrl: 'templates/snake-details.html',
-          controller: 'snakesDetailsCtrl'
+          controller: 'snakesDetailsCtrl',
+          controllerAs: 'sdc'
         }
       }
     })
@@ -74,7 +77,8 @@ angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.servic
     views: {
       'account': {
         templateUrl: 'templates/account.html',
-        controller: 'AccountCtrl'
+        controller: 'AccountCtrl',
+        controllerAs: 'ac'
       }
     }
   })
@@ -84,7 +88,8 @@ angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.servic
     views: {
       'clutches': {
         templateUrl: 'templates/clutches.html',
-        controller: 'clutchesCtrl'
+        controller: 'clutchesCtrl',
+        controllerAs: 'cc'
       }
     }
   });

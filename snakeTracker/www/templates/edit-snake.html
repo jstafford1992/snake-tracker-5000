@@ -2,5 +2,25 @@
   <ion-content class="padding" ng-controller="editSnakeCtrl as esc">
     <h1>This will become main EDIT Snake page</h1>
     <h3>{{esc.message}}</h3>
+    <!-- Will be a put to the Snake data in database -->
+    <form class="" action="/snakes/:id/edit" method="post">
+      <input type="text" name="name" value="" placeholder="Snake Name/Identifier">
+      <select class="" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <label for="hatch_year">Hatch Year</label>
+      <input type="number" name="hatch_year" value="">
+      <select class="" name="age">
+        <option value="breeder">Breeder</option>
+        <option value="yearling">Yearling</option>
+        <option value="hatchling">Hatchling</option>
+      </select>
+      <!-- Possible image upload here -->
+      <!-- Could use cloudinary or native -->
+      <input type="text" name="img_url" value="" placeholder="Image URL">
+      <button type="submit" name="submit">Edit Snake</button>
+    </form>
+
   </ion-content>
 </ion-view>

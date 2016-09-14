@@ -1,5 +1,6 @@
-<ion-view view-title="Login" ng-controller="loginCtrl as lc">
+<ion-view view-title="Login">
   <ion-content class="padding">
+
     <h2 style="color: #F14C93; font-weight: bold;">SNEKTRAKR5000</h2>
 
     <div class="card rounded padding" style="background-color: #1DE7A0;">
@@ -11,10 +12,10 @@
         <label for="password">PASSWORD</label>
         <input type="password" name="password" value="" placeholder="Password" ng-model="loginForm.password">
         <br>
-        <button type="button" name="login" ng-click="lc.login(lc.loginForm)">Login</button>
+        <button type="button" name="login" ng-click="lc.login(loginForm.email, loginForm.password)">Login</button>
       </form>
       <h4>or signup here!</h4>
-      <button type="button" name="signup" ng-click="lc.signup()">Signup</button>
+      <button type="button" name="signup" ng-click="lc.signup(loginForm.email, loginForm.password)">Signup</button>
     </div>
     <!-- Nuke Below this comment  -->
     <p>
