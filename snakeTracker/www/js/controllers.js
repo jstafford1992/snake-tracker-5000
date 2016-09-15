@@ -20,7 +20,7 @@ angular.module('snekTrakr.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  
+
 
   var vm = this;
   vm.message = "This is the Controller for the snakes-list page";

@@ -5,7 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'snekTrakr.services' is found in services.js
 // 'snekTrakr.controllers' is found in controllers.js
-angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.services'])
+angular.module('snekTrakr', ['ionic', 'ngCordova', 'snekTrakr.controllers', 'snekTrakr.services'])
+
+  //POSSIBLE NAME CLUTCH, snekTrakr;
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -64,7 +66,7 @@ angular.module('snekTrakr', ['ionic', 'snekTrakr.controllers', 'snekTrakr.servic
     .state('tab.snake-details', {
       url: '/snakesList/:snakesId',
       views: {
-        'snakesList': {
+        'snake-details': {
           templateUrl: 'templates/snake-details.html',
           controller: 'snakesDetailsCtrl',
           controllerAs: 'sdc'

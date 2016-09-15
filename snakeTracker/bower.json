@@ -2,6 +2,10 @@
   "name": "snekTrakr",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.3.1"
+    "ionic": "driftyco/ionic-bower#1.3.1",
+    "ngCordova": "^0.1.27-alpha"
+  },
+  "dependencies": {
+    "ngCordova": "^0.1.27-alpha"
   }
 }

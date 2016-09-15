@@ -14,7 +14,7 @@ angular.module('snekTrakr.services', [])
 
 }])
 
-.service('SnakesListService', ['$http', function($http){
+.service('SnakesService', ['$http', function($http){
   var vm = this;
   //SNAKE-LIST FUNCTIONALITY HERE
 
