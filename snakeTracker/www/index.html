@@ -26,6 +26,12 @@
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
     <script src="js/directives.js"></script>
+    <script type="text/javascript">
+    document.addEventListener("deviceready", onDeviceReady, false);
+      function onDeviceReady() {
+        console.log(navigator.camera);
+      }
+    </script>
   </head>
   <body ng-app="snekTrakr">
 

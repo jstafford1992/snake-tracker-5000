@@ -69,4 +69,10 @@ angular.module('snekTrakr.controllers', [])
 .controller('editClutchCtrl', function() {
   var vm = this;
   vm.message = 'EDIT CLUTCH';
-});
+})
+
+.controller('pictureController', ['PictureService', function(PictureService){
+  var vm = this;
+  vm.takePicture = PictureService.openCamera;
+
+}])

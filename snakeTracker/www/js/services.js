@@ -7,7 +7,7 @@ angular.module('snekTrakr.services', [])
 })
 
 .service('AccountService', ['$http', function($http){
-  var vm = this;
+  var sv = this;
   //LOGIN FUNCTIONALITY GOES HERE
 
 
@@ -15,7 +15,7 @@ angular.module('snekTrakr.services', [])
 }])
 
 .service('SnakesService', ['$http', function($http){
-  var vm = this;
+  var sv = this;
   //SNAKE-LIST FUNCTIONALITY HERE
 
 
@@ -53,13 +53,13 @@ angular.module('snekTrakr.services', [])
 }])
 
 .service('ClutchSerive', ['$http', function($http){
-  var vm = this;
+  var sv = this;
   // Clutch List functionality here
 
 }])
 
 .service('authInterceptor', ['$q', '$window', function($q, $window){
-  var vm = this;
+  var sv = this;
   //for JWTs
   return {
     request: function(config){
@@ -76,4 +76,62 @@ angular.module('snekTrakr.services', [])
       return response || $q.when(response);
     }
   };
+}])
+
+.service('PictureService', ['$cordovaCamera', function($cordovaCamera){
+  var sv = this;
+
+  sv. displayImage = function(imgUri) {
+
+      var elem = document.getElementById('imageFile');
+      elem.src = imgUri;
+  };
+
+  sv.openCamera = function() {
+    var options = {
+        // Some common settings are 20, 50, and 100
+        quality: 50,
+        destinationType: Camera.DestinationType.FILE_URI,
+        // In this app, dynamically set the picture source, Camera or photo gallery
+        sourceType: srcType,
+        encodingType: Camera.EncodingType.JPEG,
+        mediaType: Camera.MediaType.PICTURE,
+        allowEdit: true,
+        correctOrientation: true  //Corrects Android orientation quirks
+    };
+
+    options.targetHeight = 100;
+    options.targetWidth = 100;
+
+    var srcType = Camera.PictureSourceType.CAMERA;
+    // var func = createNewFileEntry;
+
+
+
+    $cordovaCamera.getPicture(options);
+};
+
+function openFilePicker(selection) {
+
+    var srcType = Camera.PictureSourceType.SAVEDPHOTOALBUM;
+    var options = setOptions(srcType);
+    // var func = createNewFileEntry;
+
+    if (selection == "picker-thmb") {
+        // To downscale a selected image,
+        // Camera.EncodingType (e.g., JPEG) must match the selected image type.
+        options.targetHeight = 100;
+        options.targetWidth = 100;
+    }
+
+    $cordovaCamera.getPicture(function cameraSuccess(imageUri) {
+
+        // Do something with image
+
+    }, function cameraError(error) {
+        console.debug("Unable to obtain picture: " + error, "app");
+
+    }, options);
+}
+
 }]);
