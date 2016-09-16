@@ -100,38 +100,48 @@ angular.module('snekTrakr.services', [])
         correctOrientation: true  //Corrects Android orientation quirks
     };
 
-    options.targetHeight = 100;
-    options.targetWidth = 100;
+
 
     var srcType = Camera.PictureSourceType.CAMERA;
     // var func = createNewFileEntry;
 
 
 
-    $cordovaCamera.getPicture(options);
+    return $cordovaCamera.getPicture(options).then(function(data){
+      console.log(data);
+      return 'data:image/jpeg;base64,' + data;
+    });
 };
 
-function openFilePicker(selection) {
+  sv.openFilePicker = function() {
 
-    var srcType = Camera.PictureSourceType.SAVEDPHOTOALBUM;
-    var options = setOptions(srcType);
-    // var func = createNewFileEntry;
+      var srcType = Camera.PictureSourceType.SAVEDPHOTOALBUM;
+      var options = {
+          // Some common settings are 20, 50, and 100
+          quality: 50,
+          destinationType: Camera.DestinationType.FILE_URI,
+          // In this app, dynamically set the picture source, Camera or photo gallery
+          sourceType: srcType,
+          encodingType: Camera.EncodingType.JPEG,
+          mediaType: Camera.MediaType.PICTURE,
+          allowEdit: true,
+          correctOrientation: true  //Corrects Android orientation quirks
+      };
+      options.targetHeight = 100;
+      options.targetWidth = 100;
+      // var func = createNewFileEntry;
 
-    if (selection == "picker-thmb") {
-        // To downscale a selected image,
-        // Camera.EncodingType (e.g., JPEG) must match the selected image type.
-        options.targetHeight = 100;
-        options.targetWidth = 100;
-    }
+      // if (selection == "picker-thmb") {
+      //     // To downscale a selected image,
+      //     // Camera.EncodingType (e.g., JPEG) must match the selected image type.
+      //     options.targetHeight = 100;
+      //     options.targetWidth = 100;
+      // }
 
-    $cordovaCamera.getPicture(function cameraSuccess(imageUri) {
-
-        // Do something with image
-
-    }, function cameraError(error) {
-        console.debug("Unable to obtain picture: " + error, "app");
-
-    }, options);
-}
+      return $cordovaCamera.getPicture(options).then(function(data){
+        console.log(data);
+        return 'data:image/jpeg;base64,' + data;
+      });
+  };
 
 }]);

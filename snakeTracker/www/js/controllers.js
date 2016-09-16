@@ -75,4 +75,6 @@ angular.module('snekTrakr.controllers', [])
   var vm = this;
   vm.takePicture = PictureService.openCamera;
 
-}])
+  vm.openGallery = PictureService.openFilePicker;
+
+}]);
