@@ -20,7 +20,7 @@ angular.module('snekTrakr.services', [])
 
         $window.sessionStorage.token = data.data.token;
         $window.sessionStorage.id = data.data.id;
-        $location.path('/tab/snakesList');
+        $location.path('/tab/snakes');
         resolve();
       })
       .catch(function(err) {
@@ -38,7 +38,7 @@ angular.module('snekTrakr.services', [])
       $window.sessionStorage.token = data.data.token;
       $window.sessionStorage.token = data.data.id;
       $ionicHistory.goBack();
-      // $location.path('/tab/snakesList');
+      // $location.path('/tab/snakes');
     })
     .catch(function(err){
       console.log(err);

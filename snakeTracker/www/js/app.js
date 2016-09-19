@@ -69,9 +69,9 @@ angular.module('snekTrakr', ['ionic', 'ngCordova', 'snekTrakr.controllers', 'sne
       }
     })
     .state('tab.snake-details', {
-      url: '/snakesList/:snakesId',
+      url: '/snakesList/:snakeId',
       views: {
-        'snake-details': {
+        'snakesList': {
           templateUrl: 'templates/snake-details.html',
           controller: 'snakesDetailsCtrl',
           controllerAs: 'sdc'
