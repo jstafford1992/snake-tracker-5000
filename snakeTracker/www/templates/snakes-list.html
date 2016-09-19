@@ -3,8 +3,14 @@
     <h1>This will become main Snakes page</h1>
     <h3>{{sc.message}}</h3>
 
-    <div class="" ng-repeat="snake in sc.snakes">
-      <h4>{{sc.snakes}}</h4>
+    <div class="card" ng-repeat="snake in sc.snakes.arr" style="width: 250px; float: left; padding: 10px; margin: 10px;">
+      <img ng-src="{{snake.image_url}}" alt="snake-image-here" height="50px" width="50px"/>
+        <h4>{{snake.name}}</h4>
+        <h5>{{snake.notes}}</h5>
+        <h5>{{snake.sex}}</h5>
+        <h5>{{snake.group}}</h5>
+        <h5>{{snake.year_hatched}}</h5>
+
     </div>
     <h5>End of list</h5>
 

@@ -29,9 +29,9 @@ angular.module('snekTrakr.controllers', [])
 
   var vm = this;
   vm.message = "This is the Controller for the snakes-list page";
-
   vm.getSnakes = SnakesService.getSnakes();
-  vm.snakes = SnakesService.snakes.arr;
+  vm.snakes = SnakesService.snakes;
+
 
 
 }])
