@@ -2,16 +2,21 @@
 
 angular.module('snekTrakr.controllers', [])
 
-.controller('loginCtrl', function($scope) {
+.controller('loginCtrl', ['$scope', 'LoginController', function($scope, LoginController) {
 
 
   var vm = this;
 
   vm.message = "This is the Controller for the login page";
 
-})
+  vm.login = LoginController.login;
+  vm.logout = LoginController.logout;
 
-.controller('snakesCtrl', function($scope) {
+  vm.signup = LoginController.signup;
+
+}])
+
+.controller('snakesCtrl', [ '$scope', 'SnakesService', function($scope, SnakesService) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -25,7 +30,11 @@ angular.module('snekTrakr.controllers', [])
   var vm = this;
   vm.message = "This is the Controller for the snakes-list page";
 
-})
+  vm.getSnakes = SnakesService.getSnakes();
+  vm.snakes = SnakesService.snakes.arr;
+
+
+}])
 
 .controller('snakesDetailsCtrl', function($scope, $stateParams) {
   // $scope.chat = snakesList.get($stateParams.chatId);

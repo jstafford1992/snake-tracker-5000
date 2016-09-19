@@ -6,6 +6,56 @@ angular.module('snekTrakr.services', [])
   "url": "http://localhost:3000"
 })
 
+// .constant("routeToAPI", {
+//   "url": "https://snek-trakr.herokuapp.com/"
+// })
+.service('LoginController', ['$http', '$window', 'routeToAPI', '$location', '$ionicHistory', function($http, $window, routeToAPI, $location, $ionicHistory){
+  var sv = this;
+
+  sv.login = function(email, password){
+    return new Promise(function(resolve, reject){
+      $http.post(routeToAPI.url + '/login', {email: email, password: password})
+      .then(function(data) {
+        console.log(data);
+
+        $window.sessionStorage.token = data.data.token;
+        $window.sessionStorage.id = data.data.id;
+        $location.path('/tab/snakesList');
+        resolve();
+      })
+      .catch(function(err) {
+        console.log(err);
+        delete $window.sessionStorage.token;
+        reject();
+      });
+    });
+  };
+
+  sv.signup = function(email, password){
+    $http.post(routeToAPI.url + '/signup', {email: email, password: password})
+    .then(function(data){
+      console.log(data);
+      $window.sessionStorage.token = data.data.token;
+      $window.sessionStorage.token = data.data.id;
+      $ionicHistory.goBack();
+      // $location.path('/tab/snakesList');
+    })
+    .catch(function(err){
+      console.log(err);
+      console.log(err.data.message);
+
+    });
+
+  };
+
+  sv.logout = function(){
+    delete $window.sessionStorage.token;
+    delete $window.sessionStorage.id;
+    $location.path('/tab/login');
+  };
+
+}])
+
 .service('AccountService', ['$http', function($http){
   var sv = this;
   //LOGIN FUNCTIONALITY GOES HERE
@@ -14,12 +64,22 @@ angular.module('snekTrakr.services', [])
 
 }])
 
-.service('SnakesService', ['$http', function($http){
+.service('SnakesService', ['$http', 'routeToAPI', function($http, routeToAPI){
   var sv = this;
+  sv.snakes = {};
   //SNAKE-LIST FUNCTIONALITY HERE
 
-
-
+  sv.getSnakes = function(){
+    $http.get(routeToAPI.url + '/snakes')
+    .then(function(data){
+      console.log(data.data);
+      sv.snakes.arr = data.data;
+      console.log(sv.snakes.arr);
+    })
+    .catch(function(err){
+      console.log(err);
+    });
+  };
 
 
   ///TODO this is for the QR scanner if I make it that far
