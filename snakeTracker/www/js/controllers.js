@@ -36,17 +36,34 @@ angular.module('snekTrakr.controllers', [])
 
 }])
 
-.controller('snakesDetailsCtrl', ['$scope', '$stateParams', 'SnakesService', '$location', function($scope, $stateParams, SnakesService, $location) {
+.controller('snakesDetailsCtrl', ['$scope', '$stateParams', 'SnakesService', '$location', '$state', function($scope, $stateParams, SnakesService, $location, $state) {
   // $scope.chat = snakes.get($stateParams.chatId);
   var vm = this;
   vm.message = "This is the Snake Details page Controller Message";
 
   var path = $location.path().split('/');
-  console.log(path);
-  console.log(path[path.length - 1]);
+  // console.log(path);
+  // console.log(path[path.length - 1]);
   vm.getSnakeInfo = SnakesService.getSnakeInfo(path[path.length - 1]);
   vm.snake = SnakesService.snake;
-  console.log("inside snakesDetailsCtrl");
+  // console.log("inside snakesDetailsCtrl");
+
+  vm.$state = $state;
+  vm.testGender = function(){
+    // console.log(vm.snake.info.snake.sex);
+    if (vm.snake.info.snake.sex === "female") {
+      vm.genderMale = true;
+      // console.log(vm.gender);
+      return true;
+    } else {
+      vm.gender = false;
+      // console.log(vm.gender);
+      return false;
+    }
+  };
+
+  // vm.testGender();
+
 
 }])
 

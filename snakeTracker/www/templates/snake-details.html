@@ -4,6 +4,7 @@
     <h1>SNAKE DETAILS HERE</h1>
     <h3>{{sdc.message}}</h3>
     {{sdc.snake.info}}
+    <h4>Gender: {{sdc.snake.info.snake.sex}}</h4>
     <h5>Weight: {{sdc.snake.info.weight}}</h5>
     <h5><small>Shed: {{sdc.snake.info.shed}}</small></h5>
     <h4><small>FEED: {{sdc.snake.info.feed}}</small></h4>
@@ -14,15 +15,25 @@
       </div>
       <div class="" ng-repeat="weight in sdc.snake.info.weight">
         Weight Array: {{weight}}
+        <h5>{{weight.date_weighed | date}}</h5>
+        <h5>{{weight.weight}} grams</h5>
 
       </div>
       <div class="" ng-repeat="feed in sdc.snake.info.feed">
         Feed Array: {{feed}}
+        <h6>Feed Attempt: {{feed.attempted | date}}</h6>
+        <h6>Feed Success: {{feed.success | date}}</h6>
       </div>
       <div class="" ng-repeat="pair in sdc.snake.info.pair">
         Pair Array: {{pair}}
+        <!-- TODO CURRENTLY ONLY LINKS ONE WAY TO THE MALE WILL NEED TO SET UP DIFFERENT WAY TO LINK TO FEMALES -->
+        <p>
+          <!-- {{ng-model="sdc.testGender()"}} -->
+        </p>
+        <h6 ng-hide="sdc.testGender()">Paired with: <button type="button" name="button" ng-click="sdc.$state.go('tab.snake-details', {snakeId: {{pair.snake_id}}})">{{pair.name}}</button></h6>
+        <h6 ng-show="sdc.testGender()">Paired with: <button type="button" name="button" ng-click="sdc.$state.go('tab.snake-details', {snakeId: {{pair.sire}}})">{{pair.name}}</button></h6>
+        <h6>{{pair.date_paired | date}}</h6>
       </div>
     </div>
-
   </ion-content>
 </ion-view>

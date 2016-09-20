@@ -89,7 +89,7 @@ angular.module('snekTrakr.services', [])
   sv.getSnakeInfo = function(id){
     $http.get(routeToAPI.url + '/snakes/' + id)
     .then(function(data){
-      console.log(data);
+      // console.log(data);
       sv.snake.info = data.data;
       console.log(sv.snake.info);
     });
