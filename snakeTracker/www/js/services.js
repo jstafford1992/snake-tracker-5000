@@ -20,7 +20,7 @@ angular.module('snekTrakr.services', [])
 
         $window.sessionStorage.token = data.data.token;
         $window.sessionStorage.id = data.data.id;
-        $location.path('/tab/snakes');
+        $location.path('/tab/snakesList');
         resolve();
       })
       .catch(function(err) {
@@ -64,20 +64,34 @@ angular.module('snekTrakr.services', [])
 
 }])
 
-.service('SnakesService', ['$http', 'routeToAPI', function($http, routeToAPI){
+.service('SnakesService', ['$http', 'routeToAPI', '$location', function($http, routeToAPI, $location){
   var sv = this;
   sv.snakes = {};
+  sv.snake = {};
   //SNAKE-LIST FUNCTIONALITY HERE
 
   sv.getSnakes = function(){
     $http.get(routeToAPI.url + '/snakes')
     .then(function(data){
-      console.log(data.data);
+      // console.log(data.data);
       sv.snakes.arr = data.data;
       console.log(sv.snakes.arr);
     })
     .catch(function(err){
       console.log(err);
+    });
+  };
+
+  // var path = $location.path().split('/');
+  // console.log(path);
+  // console.log(path[path.length - 1]);
+
+  sv.getSnakeInfo = function(id){
+    $http.get(routeToAPI.url + '/snakes/' + id)
+    .then(function(data){
+      console.log(data);
+      sv.snake.info = data.data;
+      console.log(sv.snake.info);
     });
   };
 
@@ -109,6 +123,21 @@ angular.module('snekTrakr.services', [])
   //     }
   //   );
   // };
+
+}])
+
+.service('SnakeDetailsService', ['$http', '$location', 'routeToAPI', function($http, $location, routeToAPI){
+  var sv = this;
+
+
+  sv.getSnakeInfo = function(id){
+    $http.get(routeToAPI.url + '/snakes/' + id)
+    .then(function(data){
+      console.log(data.data);
+      sv.snake.info = data.data;
+      console.log(sv.snake.info);
+    });
+  };
 
 }])
 

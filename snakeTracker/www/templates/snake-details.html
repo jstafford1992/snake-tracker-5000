@@ -1,9 +1,28 @@
 
-<ion-view view-title="snake-details">
+<ion-view view-title="Snake Details" cache-view="false">
   <ion-content class="padding">
-    <br>
     <h1>SNAKE DETAILS HERE</h1>
     <h3>{{sdc.message}}</h3>
+    {{sdc.snake.info}}
+    <h5>Weight: {{sdc.snake.info.weight}}</h5>
+    <h5><small>Shed: {{sdc.snake.info.shed}}</small></h5>
+    <h4><small>FEED: {{sdc.snake.info.feed}}</small></h4>
+    <h5>Pair: {{sdc.snake.info.pair}}</h5>
+    <div class="card">
+      <div class="" ng-repeat="shed in sdc.snake.info.shed">
+        Shed Array: {{shed.date_shed | date}}
+      </div>
+      <div class="" ng-repeat="weight in sdc.snake.info.weight">
+        Weight Array: {{weight}}
+
+      </div>
+      <div class="" ng-repeat="feed in sdc.snake.info.feed">
+        Feed Array: {{feed}}
+      </div>
+      <div class="" ng-repeat="pair in sdc.snake.info.pair">
+        Pair Array: {{pair}}
+      </div>
+    </div>
 
   </ion-content>
 </ion-view>

@@ -31,18 +31,24 @@ angular.module('snekTrakr.controllers', [])
   vm.message = "This is the Controller for the snakes-list page";
   vm.getSnakes = SnakesService.getSnakes();
   vm.snakes = SnakesService.snakes;
+  // vm.getSnakeInfo = SnakesService.getSnakeInfo;
   vm.$state = $state;
 
 }])
 
-.controller('snakesDetailsCtrl', function($scope, $stateParams) {
+.controller('snakesDetailsCtrl', ['$scope', '$stateParams', 'SnakesService', '$location', function($scope, $stateParams, SnakesService, $location) {
   // $scope.chat = snakes.get($stateParams.chatId);
   var vm = this;
   vm.message = "This is the Snake Details page Controller Message";
 
+  var path = $location.path().split('/');
+  console.log(path);
+  console.log(path[path.length - 1]);
+  vm.getSnakeInfo = SnakesService.getSnakeInfo(path[path.length - 1]);
+  vm.snake = SnakesService.snake;
   console.log("inside snakesDetailsCtrl");
 
-})
+}])
 
 .controller('AccountCtrl', function($scope) {
   // $scope.settings = {

@@ -1,4 +1,4 @@
-<ion-view view-title="Snakes List">
+<ion-view view-title="Snakes List" cache-view="false">
   <ion-content class="padding">
     <h1>This will become main Snakes page</h1>
     <h3>{{sc.message}}</h3>
@@ -7,11 +7,12 @@
       <div class="card"   style="width: 300px; float: left; padding: 10px; margin: 10px;">
       <img ng-src="{{snake.image_url}}" alt="snake-image-here" height="50px" width="50px"/>
         {{snake.id}}
+        <button type="button" name="button" ng-click="sc.getSnakeInfo({{snake.id}});">Get Snake Info</button>
         <h4>{{snake.name}}</h4>
         <h5>{{snake.notes}}</h5>
         <h5>{{snake.sex}}</h5>
         <h5>{{snake.group}}</h5>
-        <h5>{{snake.year_hatched}}</h5>
+        <h5>{{snake.year_hatched | date }}</h5>
       </div>
     </div>
 
