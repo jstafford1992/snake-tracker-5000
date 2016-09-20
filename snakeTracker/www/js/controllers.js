@@ -62,9 +62,6 @@ angular.module('snekTrakr.controllers', [])
     }
   };
 
-  // vm.testGender();
-
-
 }])
 
 .controller('AccountCtrl', function($scope) {

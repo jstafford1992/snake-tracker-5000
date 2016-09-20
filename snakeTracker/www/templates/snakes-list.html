@@ -5,9 +5,8 @@
     <div class="" ng-repeat="snake in sc.snakes.arr" ng-click="sc.$state.go('tab.snake-details', {snakeId: {{snake.id}}});">
       <!-- ng-click="sc.$state.go('tab.snake-details', {snakeId: {{snake.id}}}); -->
       <div class="card"   style="width: 300px; float: left; padding: 10px; margin: 10px;">
-      <img ng-src="{{snake.image_url}}" alt="snake-image-here" height="50px" width="50px"/>
-        {{snake.id}}
-        <button type="button" name="button" ng-click="sc.getSnakeInfo({{snake.id}});">Get Snake Info</button>
+      <img ng-src="{{snake.image_url}}" alt="snake-image-here" height="150px" width="150px"/>
+        <!-- <button type="button" name="button" ng-click="sc.getSnakeInfo({{snake.id}});">Get Snake Info</button> -->
         <h4>{{snake.name}}</h4>
         <h5>{{snake.notes}}</h5>
         <h5>{{snake.sex}}</h5>
