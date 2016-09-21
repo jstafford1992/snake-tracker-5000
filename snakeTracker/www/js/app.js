@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'snekTrakr.services' is found in services.js
 // 'snekTrakr.controllers' is found in controllers.js
-angular.module('snekTrakr', ['ionic', 'ngCordova', 'snekTrakr.controllers', 'snekTrakr.services'])
+angular.module('snekTrakr', ['ionic', 'ngCordova', 'snekTrakr.controllers', 'snekTrakr.services', 'snekTrakr.directives'])
 
   //POSSIBLE NAME CLUTCH, snekTrakr;
 
@@ -75,6 +75,17 @@ angular.module('snekTrakr', ['ionic', 'ngCordova', 'snekTrakr.controllers', 'sne
           templateUrl: 'templates/snake-details.html',
           controller: 'snakesDetailsCtrl',
           controllerAs: 'sdc'
+        }
+      }
+    })
+
+    .state('tab.addSnake', {
+      url: '/snakesList/new',
+      views: {
+        'snakesList': {
+          templateUrl: 'templates/add-snake.html',
+          controller: 'addSnakeCtrl',
+          controllerAs: 'asc'
         }
       }
     })

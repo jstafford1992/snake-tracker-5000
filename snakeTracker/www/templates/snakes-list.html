@@ -2,6 +2,7 @@
   <ion-content class="padding">
     <h1>This will become main Snakes page</h1>
     <h3>{{sc.message}}</h3>
+    <button type="button" name="addSnakeBtn" ng-click="sc.$state.go('tab.addSnake');"><i class="icon ion-plus-circled"> Add Snake</i></button>
     <div class="" ng-repeat="snake in sc.snakes.arr" ng-click="sc.$state.go('tab.snake-details', {snakeId: {{snake.id}}});">
       <!-- ng-click="sc.$state.go('tab.snake-details', {snakeId: {{snake.id}}}); -->
       <div class="card"   style="width: 300px; float: left; padding: 10px; margin: 10px;">
@@ -11,7 +12,7 @@
         <h5>{{snake.notes}}</h5>
         <h5>{{snake.sex}}</h5>
         <h5>{{snake.group}}</h5>
-        <h5>{{snake.year_hatched | date }}</h5>
+        <h5>{{snake.year_hatched | date : 'yyyy'}}</h5>
       </div>
     </div>
 

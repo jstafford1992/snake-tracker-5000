@@ -5,7 +5,7 @@ angular.module('snekTrakr.directives', [])
 .directive('loginDirective', function(){
   return {
     restrict: 'E',
-    templateUrl: '../templates/login.html',
+    templateUrl: 'templates/login.html',
     controller: 'loginCtrl',
     controllerAs: 'lc'
   };
@@ -14,7 +14,7 @@ angular.module('snekTrakr.directives', [])
 .directive('addSnakeDirective', function(){
   return {
     restrict: 'E',
-    templateUrl: '../templates/add-snake.html',
+    templateUrl: 'templates/add-snake.html',
     controller: 'addSnakeCtrl',
     controllerAs: 'asc'
   };
@@ -23,7 +23,7 @@ angular.module('snekTrakr.directives', [])
 .directive('editSnakeDirective', function(){
   return {
     restrict: 'E',
-    templateUrl: '../templates/edit-snake.html',
+    templateUrl: 'templates/edit-snake.html',
     controller: 'editSnakeCtrl',
     controllerAs: 'esc'
   };
@@ -32,7 +32,7 @@ angular.module('snekTrakr.directives', [])
 .directive('addClutchDirective', function() {
   return {
     restrict: 'E',
-    templateUrl: '../templates/add-clutch.html',
+    templateUrl: 'templates/add-clutch.html',
     controller: 'addClutchCtrl',
     controllerAs: 'acc'
   };
@@ -41,8 +41,44 @@ angular.module('snekTrakr.directives', [])
 .directive('editClutchDirective', function(){
   return {
     restrict: 'E',
-    templateUrl: '../templates/edit-clutch.html',
+    templateUrl: 'templates/edit-clutch.html',
     controller: 'editClutchCtrl',
     controllerAs: 'ecc'
   };
 })
+
+.directive('addShedDir', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'templates/add-shed.html',
+    controller: 'shedController',
+    controllerAs: 'shedctrl'
+  };
+})
+
+.directive('addWeightDir', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'templates/add-weight.html',
+    controller: 'addWeightController',
+    controllerAs: 'awc'
+  };
+})
+
+.directive('addFeedingDir', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'templates/add-feeding.html',
+    controller: 'addFeedingController',
+    controllerAs: 'afc'
+  };
+})
+
+.directive('addPairingDir', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'templates/add-pairing.html',
+    controller: 'addPairingController',
+    controllerAs: 'apc'
+  };
+});

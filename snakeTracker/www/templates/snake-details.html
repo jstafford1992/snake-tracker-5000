@@ -2,50 +2,57 @@
 <ion-view view-title="Snake Details" cache-view="false">
   <ion-content class="padding">
     <h1>SNAKE DETAILS HERE</h1>
-    <div class="card padding" >
+
+    <div class=" padding " >
 
       <img ng-src="{{sdc.snake.info.snake.image_url}}" alt="{{sdc.snake.info.snake.name}} image" width="250px" height="250px" />
       <h3>{{sdc.snake.info.snake.name}}</h3>
       <h4>Gender: {{sdc.snake.info.snake.sex}}</h4>
-      <button type="editSnake" name="button"><i class="icon ion-edit"> Edit</i></button>
+      <button class="button button-light button-block ion-plus-round" ng-click="sdc.showEditSnake = !sdc.showEditSnake" ng-disabled="sdc.showEditSnake"> EDIT SNAKE </button>
+      <edit-snake-directive ng-show="sdc.showEditSnake"></edit-snake-directive>
     </div>
-    <div class="card">
+
+    <div class="">
       <div class="padding">
         <h4>Shed</h4>
+        <button type="button" name="button" class="button" ng-click="sdc.showAddShed = !sdc.showAddShed" ng-disabled="sdc.showAddShed"><i class="icon ion-plus-circled"></i></button>
+        <add-shed-dir ng-show="sdc.showAddShed"></add-shed-dir>
         <div class="padding" ng-repeat="shed in sdc.snake.info.shed">
           Shed: {{shed.date_shed | date}}
         </div>
-        <button type="button" name="button" class="button"><i class="icon ion-plus-circled"></i></button>
 
-        <!-- <ion-icon name="add-circle"></ion-icon> -->
       </div>
       <div class="padding">
         <h4>Weight</h4>
+        <button type="button" name="button" class="button" ng-click="sdc.showAddWeight = !sdc.showAddWeight" ng-disabled="sdc.showAddWeight"><i class="icon ion-plus-circled"></i></button>
+        <add-weight-dir ng-show="sdc.showAddWeight"></add-weight-dir>
         <div class="padding" ng-repeat="weight in sdc.snake.info.weight">
           <h5>{{weight.date_weighed | date}}</h5>
           <h5>{{weight.weight}} grams</h5>
         </div>
-        <button type="button" name="button" class="button"><i class="icon ion-plus-circled"></i></button>
       </div>
       <div class="padding">
         <h4>Feed</h4>
+        <button type="button" name="button" class="button" ng-click="sdc.showAddFeeding = !sdc.showAddFeeding" ng-disabled="sdc.showAddFeeding"><i class="icon ion-plus-circled"></i></button>
+        <add-feeding-dir ng-show="sdc.showAddFeeding"></add-feeding-dir>
         <div class="padding" ng-repeat="feed in sdc.snake.info.feed">
           <h6>Attempt: {{feed.attempted | date}}</h6>
           <h6>Success: {{feed.successful | date}}</h6>
         </div>
-        <button type="button" name="button" class="button"><i class="icon ion-plus-circled"></i></button>
       </div>
       <div class="padding">
         <h4>Pairings</h4>
+        <button type="button" name="button" class="button" ng-click="sdc.showAddPairing = !sdc.showAddPairing" ng-disabled="sdc.showAddPairing"><i class="icon ion-plus"></i></button>
+        <add-pairing-dir ng-show="sdc.showAddPairing"></add-pairing-dir>
         <div class="" ng-repeat="pair in sdc.snake.info.pair">
           <h6 ng-hide="sdc.testGender()">Paired with: <button type="button" name="button" ng-click="sdc.$state.go('tab.snake-details', {snakeId: {{pair.snake_id}}})">{{pair.name}}</button></h6>
           <h6 ng-show="sdc.testGender()">Paired with: <button type="button" name="button" ng-click="sdc.$state.go('tab.snake-details', {snakeId: {{pair.sire}}})">{{pair.name}}</button></h6>
           <h6>Paired with: {{pair.name}} on {{pair.date_paired | date}} </h6>
           <h6></h6>
         </div>
-        <button type="button" name="button" class="button"><i class="icon ion-plus"></i></button>
       </div>
-
+      <br>
+      <br>
     </div>
   </ion-content>
 </ion-view>

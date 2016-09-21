@@ -40,6 +40,11 @@ angular.module('snekTrakr.controllers', [])
   // $scope.chat = snakes.get($stateParams.chatId);
   var vm = this;
   vm.message = "This is the Snake Details page Controller Message";
+  vm.showEditSnake = false;
+  vm.showAddShed = false;
+  vm.showAddWeight = false;
+  vm.showAddFeeding = false;
+  vm.showAddPairing = false;
 
   var path = $location.path().split('/');
   // console.log(path);
@@ -84,6 +89,8 @@ angular.module('snekTrakr.controllers', [])
 .controller('editSnakeCtrl', function($scope){
   var vm = this;
   vm.message = "EDIT SNAKE";
+
+
 })
 
 .controller('clutchesCtrl', function(){
@@ -107,4 +114,32 @@ angular.module('snekTrakr.controllers', [])
 
   vm.openGallery = PictureService.openFilePicker;
 
+}])
+
+.controller('shedController', ['$http', function($http){
+  var vm = this;
+
+
+
+}])
+
+.controller('addWeightController', ['$http', function($http){
+  var vm = this;
+
+
+}])
+
+.controller('addFeedingController', ['$http', function($http){
+  var vm = this;
+
+
+}])
+
+.controller('addPairingController', ['$http', function($http){
+  var vm = this;
+
 }]);
+
+
+
+//
