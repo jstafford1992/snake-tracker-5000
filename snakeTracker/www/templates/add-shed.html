@@ -1,6 +1,6 @@
 <form class="" >
   <label for="shed_date">Date Shed</label>
-  <input type="date" name="name" value="">
-  <button type="button" name="button">Add Shed</button>
+  <input type="date" name="shed_date" value="" ng-model="sdc.shed_date">
+  <button type="button" name="button" ng-click="sdc.addShedInfo(sdc.shed_date)">Add Shed</button>
   <button ng-click="sdc.showAddShed = !sdc.showAddShed;" class="button button-stable button-block">Close</button>
 </form>

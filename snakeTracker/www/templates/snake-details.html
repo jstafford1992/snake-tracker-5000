@@ -18,7 +18,9 @@
         <button type="button" name="button" class="button" ng-click="sdc.showAddShed = !sdc.showAddShed" ng-disabled="sdc.showAddShed"><i class="icon ion-plus-circled"></i></button>
         <add-shed-dir ng-show="sdc.showAddShed"></add-shed-dir>
         <div class="padding" ng-repeat="shed in sdc.snake.info.shed">
+          {{shed}}
           Shed: {{shed.date_shed | date}}
+          <button type="button" name="button" ng-click="sdc.deleteShedInfo({{shed.id}})"><i class="ion-trash-a"></i></button>
         </div>
 
       </div>
@@ -29,6 +31,7 @@
         <div class="padding" ng-repeat="weight in sdc.snake.info.weight">
           <h5>{{weight.date_weighed | date}}</h5>
           <h5>{{weight.weight}} grams</h5>
+          <button type="button" name="button" ng-click="sdc.deleteWeightInfo({{weight.id}})"><i class="ion-trash-a"></i></button>
         </div>
       </div>
       <div class="padding">
@@ -38,6 +41,8 @@
         <div class="padding" ng-repeat="feed in sdc.snake.info.feed">
           <h6>Attempt: {{feed.attempted | date}}</h6>
           <h6>Success: {{feed.successful | date}}</h6>
+          {{feed}}
+          <button type="button" name="button" ng-click="sdc.deleteFeedingInfo({{feed.id}})"><i class="ion-trash-a"></i></button>
         </div>
       </div>
       <div class="padding">
@@ -48,7 +53,7 @@
           <h6 ng-hide="sdc.testGender()">Paired with: <button type="button" name="button" ng-click="sdc.$state.go('tab.snake-details', {snakeId: {{pair.snake_id}}})">{{pair.name}}</button></h6>
           <h6 ng-show="sdc.testGender()">Paired with: <button type="button" name="button" ng-click="sdc.$state.go('tab.snake-details', {snakeId: {{pair.sire}}})">{{pair.name}}</button></h6>
           <h6>Paired with: {{pair.name}} on {{pair.date_paired | date}} </h6>
-          <h6></h6>
+          <button type="button" name="button" ng-click="sdc.deleteBreedingInfo({{pair.id}})"><i class="ion-trash-a"></i></button>
         </div>
       </div>
       <br>

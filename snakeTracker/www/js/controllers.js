@@ -51,22 +51,37 @@ angular.module('snekTrakr.controllers', [])
   // console.log(path[path.length - 1]);
   vm.getSnakeInfo = SnakesService.getSnakeInfo(path[path.length - 1]);
   vm.snake = SnakesService.snake;
-  // console.log("inside snakesDetailsCtrl");
+
+  vm.deleteShedInfo = SnakesService.deleteShedInfo;
+  vm.addShedInfo = SnakesService.addShedInfo;
+
+  vm.deleteWeightInfo = SnakesService.deleteWeightInfo;
+  vm.addWeightInfo = SnakesService.addWeightInfo;
+
+  vm.deleteFeedingInfo = SnakesService.deleteFeedingInfo;
+  vm.addFeedingInfo = SnakesService.addFeedingInfo;
+
+  vm.deleteBreedingInfo = SnakesService.deleteBreedingInfo;
+  vm.addBreedingInfoFemale = SnakesService.addBreedingInfoFemale;
+  vm.addBreedingInfoMale = SnakesService.addBreedingInfoMale;
+
 
   vm.$state = $state;
   vm.testGender = function(){
     // console.log(vm.snake.info.snake.sex);
     if (vm.snake.info.snake.sex === "female") {
-      vm.genderMale = true;
+      // console.log("Is Female");
       // console.log(vm.gender);
       return true;
     } else {
-      vm.gender = false;
-      // console.log(vm.gender);
+      // console.log("Is Male");
       return false;
     }
   };
 
+  vm.snakes = SnakesService.snakes;
+  // console.log(vm.snakes.males);
+  // console.log(vm.snakes.females);
 }])
 
 .controller('AccountCtrl', function($scope) {
@@ -79,24 +94,30 @@ angular.module('snekTrakr.controllers', [])
 
 })
 
-.controller('addSnakeCtrl', function($scope){
+.controller('addSnakeCtrl', ['SnakesService', function($scope, SnakesService){
   var vm = this;
   vm.message = "ADD A NEW SNAKE!";
 
 
-})
+}])
 
-.controller('editSnakeCtrl', function($scope){
+.controller('editSnakeCtrl', ['SnakesService', function($scope, SnakesService){
   var vm = this;
   vm.message = "EDIT SNAKE";
 
 
-})
+}])
 
-.controller('clutchesCtrl', function(){
+.controller('clutchesCtrl', ['ClutchService', '$state', '$location', function(ClutchService, $state, $location){
   var vm = this;
   vm.message = "LIST CLUTCHES";
-})
+
+  // ClutchService.getClutches();
+
+  vm.clutches = ClutchService.clutches;
+  console.log(vm.clutches);
+
+}])
 
 .controller('addClutchCtrl', function() {
   var vm = this;
@@ -116,27 +137,40 @@ angular.module('snekTrakr.controllers', [])
 
 }])
 
-.controller('shedController', ['$http', function($http){
+.controller('shedController', ['$http', 'SnakesService', function($http, SnakesService){
   var vm = this;
 
 
 
 }])
 
-.controller('addWeightController', ['$http', function($http){
+.controller('addWeightController', ['$http', 'SnakesService', function($http, SnakesService){
   var vm = this;
 
 
 }])
 
-.controller('addFeedingController', ['$http', function($http){
+.controller('addFeedingController', ['$http', 'SnakesService', function($http, SnakesService){
   var vm = this;
 
 
 }])
 
-.controller('addPairingController', ['$http', function($http){
+.controller('addPairingController', ['$http', 'SnakesService', '$location', function($http, SnakesService, $location){
   var vm = this;
+
+  vm.snakes = SnakesService.snakes;
+  vm.snake = SnakesService.snake;
+
+  // console.log(vm.snake.gender);
+
+  // var path = $location.path().split('/');
+  // console.log(path);
+  // console.log(path[path.length - 1]);
+  // vm.getSnakeInfo = SnakesService.getSnakeInfo(path[path.length - 1]);
+  // vm.snake = SnakesService.snake;
+  //
+  // console.log(vm.snake.info);
 
 }]);
 

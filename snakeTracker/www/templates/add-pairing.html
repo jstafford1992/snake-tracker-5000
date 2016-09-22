@@ -1,9 +1,14 @@
 <form class="" >
   <label for="date_paired">Date Paired</label>
-  <input type="date" name="date_paired" value="">
-  <select class="" name="paired_with">
-    <option value="option">option</option>
+  <input type="date" name="date_paired" value="" ng-model="sdc.date_paired">
+  <select class="" name="paired_with" ng-show="sdc.testGender()" ng-model="sdc.male">
+    <option ng-repeat="male in apc.snakes.males" value="{{male.id}}">{{male.name}}</option>
   </select>
+  <select class="" name="paired_with" ng-hide="sdc.testGender()" ng-model="sdc.female">
+    <option ng-repeat="female in apc.snakes.females" value="{{female.id}}">{{female.name}}</option>
+  </select>
+  <button type="button" name="button" ng-hide="sdc.testGender()" ng-click="sdc.addBreedingInfoMale(sdc.female, sdc.date_paired)">Add Pairing MALE? </button>
+  <button type="button" name="button" ng-show="sdc.testGender()" ng-click="sdc.addBreedingInfoFemale(sdc.male, sdc.date_paired)">Add Pairing</button>
   <button ng-click="sdc.showAddPairing = !sdc.showAddPairing;" class="button button-stable button-block">Close</button>
 </form>
 <br>

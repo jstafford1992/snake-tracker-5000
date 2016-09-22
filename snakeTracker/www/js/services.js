@@ -2,12 +2,16 @@
 
 angular.module('snekTrakr.services', [])
 
+// .constant("routeToAPI", {
+//   "url": "http:10.7.80.106:3000"
+// })
+
 .constant("routeToAPI", {
   "url": "http://localhost:3000"
 })
 
 // .constant("routeToAPI", {
-//   "url": "https://snek-trakr.herokuapp.com/"
+//   "url": "https://snek-trakr.herokuapp.com"
 // })
 .service('LoginController', ['$http', '$window', 'routeToAPI', '$location', '$ionicHistory', function($http, $window, routeToAPI, $location, $ionicHistory){
   var sv = this;
@@ -64,7 +68,7 @@ angular.module('snekTrakr.services', [])
 
 }])
 
-.service('SnakesService', ['$http', 'routeToAPI', '$location', function($http, routeToAPI, $location){
+.service('SnakesService', ['$http', 'routeToAPI', '$location', '$state', function($http, routeToAPI, $location, $state){
   var sv = this;
   sv.snakes = {};
   sv.snake = {};
@@ -75,7 +79,19 @@ angular.module('snekTrakr.services', [])
     .then(function(data){
       // console.log(data.data);
       sv.snakes.arr = data.data;
+      sv.snakes.males = [];
+      sv.snakes.females = [];
+      for(var i = 0; i < sv.snakes.arr.length; i++){
+        if(sv.snakes.arr[i].group === "breeder" && sv.snakes.arr[i].sex === "male"){
+          sv.snakes.males.push(sv.snakes.arr[i]);
+        } else {
+          sv.snakes.females.push(sv.snakes.arr[i]);
+        }
+      }
+
       console.log(sv.snakes.arr);
+      // console.log(sv.snakes.males);
+      // console.log(sv.snakes.females);
     })
     .catch(function(err){
       console.log(err);
@@ -92,6 +108,143 @@ angular.module('snekTrakr.services', [])
       // console.log(data);
       sv.snake.info = data.data;
       console.log(sv.snake.info);
+      if (sv.snake.info.snake.sex === "male") {
+        sv.snake.gender = true;
+        // console.log(sv.snake.gender);
+      } else {
+        sv.snake.gender = false;
+        // console.log(sv.snake.gender);
+      }
+    });
+  };
+
+  //BREEDING CRUD
+  sv.addBreedingInfoFemale = function(sire,  date_paired){
+    $http.post(routeToAPI.url + '/breeding', {
+      snake_id: sv.snake.info.snake.id,
+      sire: sire,
+      date_paired: date_paired
+    })
+    .then(function(data){
+      console.log(data);
+      $state.reload();
+    }).catch(function(err){
+      console.log(err);
+    });
+
+  };
+
+  sv.addBreedingInfoMale = function(snake_id, date_paired){
+    $http.post(routeToAPI.url + '/breeding', {
+      snake_id: snake_id,
+      sire: sv.snake.info.snake.id,
+      date_paired: date_paired
+    })
+    .then(function(data){
+      console.log(data);
+      $state.reload();
+    }).catch(function(err){
+      console.log(err);
+    });
+
+  };
+
+  sv.deleteBreedingInfo = function(id){
+    $http.delete(routeToAPI.url + '/breeding/' + id)
+    .then(function(data){
+      console.log(data);
+      $state.reload();
+    }).catch(function(err){
+      console.log(err);
+    });
+  };
+
+
+  //FEEDING CRUD
+
+  sv.addFeedingInfo = function(rat_size, successful, attempted){
+    $http.post(routeToAPI.url + '/feeding', {
+      snake_id: sv.snake.info.snake.id,
+      rat_size: rat_size,
+      successful: successful,
+      attempted: attempted
+    }).then(function(data){
+      console.log(data);
+      $state.reload();
+    }).catch(function(err){
+      console.log(err);
+
+    });
+  };
+
+  sv.deleteFeedingInfo = function(id){
+    $http.delete(routeToAPI.url + '/feeding/' + id)
+    .then(function(data){
+      console.log(data);
+      $state.reload();
+    }).catch(function(err){
+      console.log(err);
+    });
+  };
+
+
+  //WEIGHT CRUD
+  sv.addWeightInfo = function(weight, date_weighed){
+    $http.post(routeToAPI.url + '/weight', {
+      snake_id: sv.snake.info.snake.id, weight: weight, date_weighed: date_weighed})
+      .then(function(data){
+      console.log(data);
+      $state.reload();
+    }).catch(function(err){
+      console.log(err);
+
+    });
+  };
+
+  sv.deleteWeightInfo = function(id){
+    $http.delete(routeToAPI.url + '/weight/' + id)
+    .then(function(data){
+      console.log(data);
+      $state.reload();
+    }).catch(function(err){
+      console.log(err);
+    });
+  };
+
+
+  //SHED CRUD
+  sv.addShedInfo = function(date_shed){
+    $http.post(routeToAPI.url + '/shed', {
+      snake_id: sv.snake.info.snake.id,
+      date_shed: date_shed
+    }).then(function(data){
+      console.log(data);
+      $state.reload();
+    }).catch(function(err){
+      console.log(err);
+
+    });
+  };
+
+  sv.deleteShedInfo = function(id){
+    $http.delete(routeToAPI.url + '/shed/' + id)
+    .then(function(data){
+      console.log(data);
+      $state.reload();
+    }).catch(function(err){
+      console.log(err);
+    });
+  };
+
+
+  //DELETE SNAKE
+  sv.deleteSnake = function(id){
+    $http.delete(routeToAPI.url + '/snakes/' + id)
+    .then(function(data){
+      console.log(data);
+      $state.reload();
+    }).catch(function(err){
+      console.log(err);
     });
   };
 
@@ -130,20 +283,42 @@ angular.module('snekTrakr.services', [])
   var sv = this;
 
 
-  sv.getSnakeInfo = function(id){
-    $http.get(routeToAPI.url + '/snakes/' + id)
-    .then(function(data){
-      console.log(data.data);
-      sv.snake.info = data.data;
-      console.log(sv.snake.info);
-    });
-  };
+  // sv.getSnakeInfo = function(id){
+  //   $http.get(routeToAPI.url + '/snakes/' + id)
+  //   .then(function(data){
+  //     console.log(data.data);
+  //     sv.snake.info = data.data;
+  //     console.log(sv.snake.info);
+  //     if (sv.snake.info.snake.sex === "male") {
+  //       sv.snake.gender = true;
+  //       console.log(sv.snake.gender);
+  //     } else {
+  //       sv.snake.gender = false;
+  //       console.log(sv.snake.gender);
+  //     }
+  //   });
+  // };
+
+  // sv.getPairingOptions = function(gender){
+  //   $http.get(routeToAPI.url + '/snakes')
+  // }
 
 }])
 
-.service('ClutchSerive', ['$http', function($http){
+.service('ClutchService', ['$http', 'routeToAPI', '$location', function($http, routeToAPI, $location){
   var sv = this;
   // Clutch List functionality here
+  sv.clutches = {};
+
+
+  sv.getClutches = function(){
+    $http.get(routeToAPI.url + '/clutches').then(function(data){
+      console.log(data.data);
+      sv.clutches.arr = data.data;
+    });
+  };
+  sv.getClutches();
+
 
 }])
 

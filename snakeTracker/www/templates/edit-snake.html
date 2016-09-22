@@ -1,4 +1,4 @@
-  <form class="" action="/snakes/:id/edit" method="post">
+  <form class="" method="post">
     <input type="text" name="name" value="" placeholder="Snake Name/Identifier">
     <select class="" name="gender">
       <option value="male">Male</option>
@@ -15,4 +15,5 @@
     <!-- Could use cloudinary or native -->
     <input type="text" name="img_url" value="" placeholder="Image URL">
     <button type="submit" name="submit">Edit Snake</button>
+    <button ng-click="sdc.showEditSnake = !sdc.showEditSnake" class="button button-stable button-block">Close</button>
   </form>

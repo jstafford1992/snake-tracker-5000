@@ -1,8 +1,17 @@
 <form class="" >
   <label for="date_attempted">Attempt:</label>
-  <input type="date" name="name" value="">
+  <input type="date" name="date_attempted" value="" ng-model="sdc.date_attempted">
   <label for="date_successful">Successful: </label>
-  <input type="date" name="name" value="">
-  <button type="button" name="button">Add Feeding</button>
+  <input type="date" name="name" value="" ng-model="sdc.date_successful">
+  <select class="" name="rat_size" ng-model="sdc.rat_size">
+    <option value="pinkie">Pinkie</option>
+    <option value="crawler">Crawler</option>
+    <option value="weaned">Weaned</option>
+    <option value="small">Small</option>
+    <option value="medium">Medium</option>
+    <option value="large">Large</option>
+    <option value="exta-large">X-large</option>
+  </select>       
+  <button type="button" name="button" ng-click="sdc.addFeedingInfo(sdc.rat_size, sdc.date_successful, sdc.date_attempted)">Add Feeding</button>
   <button ng-click="sdc.showAddFeeding = !sdc.showAddFeeding;" class="button button-stable button-block">Close</button>
 </form>
