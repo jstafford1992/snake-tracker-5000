@@ -65,6 +65,7 @@ angular.module('snekTrakr.controllers', [])
   vm.addBreedingInfoFemale = SnakesService.addBreedingInfoFemale;
   vm.addBreedingInfoMale = SnakesService.addBreedingInfoMale;
 
+  vm.updateSnake = SnakesService.updateSnake;
 
   vm.$state = $state;
   vm.testGender = function(){
@@ -116,6 +117,8 @@ angular.module('snekTrakr.controllers', [])
 
   vm.clutches = ClutchService.clutches;
   console.log(vm.clutches);
+
+  vm.$state = $state;
 
 }])
 
@@ -172,6 +175,12 @@ angular.module('snekTrakr.controllers', [])
   //
   // console.log(vm.snake.info);
 
+}])
+
+.controller('clutchDetailsController', ['$http', function($http){
+  var vm = this;
+
+  vm.message = "CLUTCH DETAILS CONTROLLER";
 }]);
 
 

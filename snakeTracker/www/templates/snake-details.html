@@ -8,6 +8,7 @@
       <img ng-src="{{sdc.snake.info.snake.image_url}}" alt="{{sdc.snake.info.snake.name}} image" width="250px" height="250px" />
       <h3>{{sdc.snake.info.snake.name}}</h3>
       <h4>Gender: {{sdc.snake.info.snake.sex}}</h4>
+      <h4>Year Hatched: {{sdc.snake.info.snake.year_hatched | date}}</h4>
       <button class="button button-light button-block ion-plus-round" ng-click="sdc.showEditSnake = !sdc.showEditSnake" ng-disabled="sdc.showEditSnake"> EDIT SNAKE </button>
       <edit-snake-directive ng-show="sdc.showEditSnake"></edit-snake-directive>
     </div>

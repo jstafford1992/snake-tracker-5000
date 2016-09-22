@@ -249,6 +249,25 @@ angular.module('snekTrakr.services', [])
   };
 
 
+
+  sv.updateSnake = function(id, name, notes, sex, year_hatched, group, image_url){
+    $http.put(routeToAPI.url + '/snakes/' + id, {
+      id: id,
+      name: name,
+      notes: notes,
+      sex: sex,
+      year_hatched: year_hatched,
+      group: group,
+      image_url: image_url
+    }).then(function(data){
+      console.log(data);
+      $state.reload();
+    }).catch(function(err){
+      console.log(err);
+
+    });
+  };
+
   ///TODO this is for the QR scanner if I make it that far
   //   vm.scan = function() {
   //   cordova.plugins.barcodeScanner.scan(
@@ -305,7 +324,7 @@ angular.module('snekTrakr.services', [])
 
 }])
 
-.service('ClutchService', ['$http', 'routeToAPI', '$location', function($http, routeToAPI, $location){
+.service('ClutchService', ['$http', 'routeToAPI', '$location', '$state', function($http, routeToAPI, $location, $state){
   var sv = this;
   // Clutch List functionality here
   sv.clutches = {};
@@ -318,6 +337,8 @@ angular.module('snekTrakr.services', [])
     });
   };
   sv.getClutches();
+
+
 
 
 }])

@@ -110,6 +110,17 @@ angular.module('snekTrakr', ['ionic', 'ngCordova', 'snekTrakr.controllers', 'sne
         controllerAs: 'cc'
       }
     }
+  })
+
+  .state('tab.clutch-details', {
+    url: '/clutches/:clutchId',
+    views: {
+      'clutches': {
+        templateUrl: 'templates/clutch-details.html',
+        controller: 'clutchDetailsController',
+        controllerAs: 'cdc'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback
