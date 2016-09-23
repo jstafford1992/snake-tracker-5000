@@ -86,15 +86,20 @@ angular.module('snekTrakr.controllers', [])
 
 }])
 
-.controller('AccountCtrl', function($scope) {
-  // $scope.settings = {
-  //   enableFriends: true
-  // };
+.controller('AccountCtrl', ['AccountService', function(AccountService) {
 
   var vm = this;
   vm.message = "This is the Controller for the Account page";
 
-})
+  vm.showEdit = false;
+
+  vm.getAccountInfo = AccountService.getAccountInfo;
+
+  vm.account = AccountService.account;
+
+  vm.updateAccount = AccountService.updateAccount;
+
+}])
 
 .controller('addSnakeCtrl', ['AddSnakeService', '$http', function(AddSnakeService, $http){
   var vm = this;
@@ -147,7 +152,7 @@ angular.module('snekTrakr.controllers', [])
 
   vm.deleteClutch = ClutchService.deleteClutch;
 
-  
+
 }])
 
 .controller('pictureController', ['PictureService', function(PictureService){

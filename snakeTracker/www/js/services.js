@@ -60,11 +60,45 @@ angular.module('snekTrakr.services', [])
 
 }])
 
-.service('AccountService', ['$http', function($http){
+.service('AccountService', ['$http', 'routeToAPI', '$state', '$window', function($http, routeToAPI, $state, $window){
   var sv = this;
   //LOGIN FUNCTIONALITY GOES HERE
+  sv.account = {};
 
+  sv.getAccountInfo = function(){
+    $http.get(routeToAPI.url + '/user')
+    .then(function(data){
+      console.log(data.data);
+      sv.account.info = data.data[0];
+    }).catch(function(err){
+      console.log(err);
+    });
+  };
 
+  sv.getAccountInfo();
+
+  sv.updateAccount = function(id, email, confirmPassword){
+    $http.put(routeToAPI.url + '/user/' + id, {
+      id: id,
+      email: email,
+      password: confirmPassword
+    }).then(function(data){
+      console.log(data);
+      sv.logout();
+      $state.go('tab.login');
+
+    }).catch(function(err){
+      console.log(err);
+
+    });
+
+  };
+
+  sv.logout = function(){
+    delete $window.sessionStorage.token;
+    delete $window.sessionStorage.id;
+    // $location.path('/tab/login');
+  };
 
 }])
 
