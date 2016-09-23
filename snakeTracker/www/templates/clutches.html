@@ -1,6 +1,7 @@
-<ion-view view-title="Clutches">
+<ion-view view-title="Clutches" cache-view="false">
   <ion-content class="padding">
     <h1 class="">Clutches</h1>
+    <button type="button" name="addClutch" ng-click="cc.$state.go('tab.addClutch')">Add Clutch</button>
     <div class="card" ng-repeat="clutch in cc.clutches.arr" ng-click="cc.$state.go('tab.clutch-details', {clutchId: {{clutch.id}}});">
 
       {{clutch}}

@@ -4,16 +4,19 @@
     <h3>{{ecc.message}}</h3>
     <!-- Will be a PUT to update  -->
     <form class="" method="post">
-      <input type="id" name="dame" value="" placeholder="Dame">
-      <input type="date" name="date_layed" value="" placeholder="Date Layed">
-      <input type="textarea" name="notes" value="" placeholder="Notes">
+      <input type="id" name="dame" placeholder="Layed By" ng-model="ecc.clutch.info.snake_id">
+      <br>
+      Date Layed: {{ecc.clutch.info.date_layed | date }}
+      <input type="date" name="date_layed" value="" placeholder="Date Layed" ng-model="ecc.clutch.info.date_layed">
+      <textarea name="name" rows="8" cols="40" ng-model="ecc.clutch.info.notes"></textarea>
       <label for="eggs_layed">Number of Eggs Layed</label>
-      <input type="number" name="eggs_layed" value="">
+      <input type="number" name="number_layed" ng-model="ecc.clutch.info.number_layed">
       <label for="bad_eggs">Infertile Eggs</label>
-      <input type="number" name="bad_eggs" value="">
+      <input type="number" name="bad_eggs" ng-model="ecc.clutch.info.bad_eggs">
       <label for="Number of Eggs Hatched">Eggs Hatched</label>
-      <input type="number" name="eggs_hatched" value="">
-      <button type="submit" name="submit">Edit Clutch</button>
+      <input type="number" name="eggs_hatched" ng-model="ecc.clutch.info.number_hatched">
+      <button type="submit" name="submit" ng-click="ecc.updateClutch(ecc.clutch.info.id, ecc.clutch.info.snake_id, ecc.clutch.info.date_layed, ecc.clutch.info.notes, ecc.clutch.info.number_layed, ecc.clutch.info.bad_eggs, ecc.clutch.info.number_hatched)">Edit Clutch</button>
     </form>
+    <button type="button" name="button" ng-click="ecc.deleteClutch(ecc.clutch.info.id)">Delete Clutch</button>
   </ion-content>
 </ion-view>

@@ -3,22 +3,25 @@
     <h1>This will become main Add Snake page</h1>
     <h3>{{asc.message}}</h3>
     <form class="" method="post">
-      <input type="text" name="name" value="" placeholder="Snake Name/Identifier">
-      <select class="" name="gender">
+      <input type="text" name="name" placeholder="Snake Name/Identifier" ng-model="asc.name">
+      <select class="" name="gender" ng-model="asc.sex">
         <option value="male">Male</option>
         <option value="female">Female</option>
       </select>
       <label for="hatch_year">Hatch Year</label>
-      <input type="date" name="hatch_year" value="">
-      <select class="" name="age">
+      <input type="date" name="hatch_year" ng-model="asc.hatch_year">
+      <select class="" name="group" ng-model="asc.group">
         <option value="breeder">Breeder</option>
         <option value="yearling">Yearling</option>
         <option value="hatchling">Hatchling</option>
       </select>
+      <label for="notes">Notes:</label>
+      <textarea name="notes" rows="5" cols="30" ng-model="asc.notes"></textarea>
       <!-- Possible image upload here -->
       <!-- Could use cloudinary or native -->
-      <input type="text" name="img_url" value="" placeholder="Image URL">
-      <button type="submit" name="submit">Add Snake</button>
+      <input type="text" name="url" value="" placeholder="URL" ng-model="asc.url">
+      <input type="text" name="img_url" value="" placeholder="Image URL" ng-model="asc.image_url">
+      <button type="submit" name="submit" ng-click="asc.newSnake(asc.name, asc.sex, asc.hatch_year, asc.group, asc.notes, asc.url, asc.image_url)">Add Snake!</button>
     </form>
   </ion-content>
 </ion-view>

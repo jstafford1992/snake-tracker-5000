@@ -83,6 +83,7 @@ angular.module('snekTrakr.controllers', [])
   vm.snakes = SnakesService.snakes;
   // console.log(vm.snakes.males);
   // console.log(vm.snakes.females);
+
 }])
 
 .controller('AccountCtrl', function($scope) {
@@ -95,10 +96,12 @@ angular.module('snekTrakr.controllers', [])
 
 })
 
-.controller('addSnakeCtrl', ['SnakesService', function($scope, SnakesService){
+.controller('addSnakeCtrl', ['AddSnakeService', '$http', function(AddSnakeService, $http){
   var vm = this;
   vm.message = "ADD A NEW SNAKE!";
+ // console.log(routeToAPI.url);
 
+  vm.newSnake = AddSnakeService.newSnake;
 
 }])
 
@@ -116,8 +119,8 @@ angular.module('snekTrakr.controllers', [])
   // ClutchService.getClutches();
 
   vm.clutches = ClutchService.clutches;
-  console.log(vm.clutches);
-
+  // console.log(vm.clutches);
+  vm.getClutches = ClutchService.getClutches();
   vm.$state = $state;
 
 }])
@@ -125,12 +128,27 @@ angular.module('snekTrakr.controllers', [])
 .controller('addClutchCtrl', function() {
   var vm = this;
   vm.message = "ADD CLUTCH";
+
+
 })
 
-.controller('editClutchCtrl', function() {
+.controller('editClutchCtrl', [ '$stateParams', 'ClutchService', '$location', '$state', function($stateParams, ClutchService, $location, $state) {
   var vm = this;
   vm.message = 'EDIT CLUTCH';
-})
+  // vm.clutch = {};
+
+  var path = $location.path().split('/');
+  // console.log(path);
+  // console.log(path[path.length - 1]);
+  vm.getClutch = ClutchService.getClutch(path[path.length - 1]);
+  vm.clutch = ClutchService.clutch;
+
+  vm.updateClutch = ClutchService.updateClutch;
+
+  vm.deleteClutch = ClutchService.deleteClutch;
+
+  
+}])
 
 .controller('pictureController', ['PictureService', function(PictureService){
   var vm = this;
@@ -181,6 +199,8 @@ angular.module('snekTrakr.controllers', [])
   var vm = this;
 
   vm.message = "CLUTCH DETAILS CONTROLLER";
+
+
 }]);
 
 

@@ -268,6 +268,8 @@ angular.module('snekTrakr.services', [])
     });
   };
 
+
+
   ///TODO this is for the QR scanner if I make it that far
   //   vm.scan = function() {
   //   cordova.plugins.barcodeScanner.scan(
@@ -324,11 +326,35 @@ angular.module('snekTrakr.services', [])
 
 }])
 
+.service('AddSnakeService', ['$http', 'routeToAPI', '$location', '$state', function($http, routeToAPI, $location, $state){
+
+  var sv = this;
+
+  sv.newSnake = function(name, sex, hatch_year, group, notes, url, image_url){
+    $http.post(routeToAPI.url + '/snakes', {
+      name: name,
+      sex: sex,
+      year_hatched: hatch_year,
+      group: group,
+      notes: notes,
+      url: url,
+      image_url: image_url
+    }).then(function(data){
+      console.log(data);
+      $state.go('tab.snakesList');
+    }).catch(function(err){
+      console.log(err);
+
+    });
+  };
+}])
+
 .service('ClutchService', ['$http', 'routeToAPI', '$location', '$state', function($http, routeToAPI, $location, $state){
   var sv = this;
   // Clutch List functionality here
   sv.clutches = {};
 
+  sv.clutch = {};
 
   sv.getClutches = function(){
     $http.get(routeToAPI.url + '/clutches').then(function(data){
@@ -336,10 +362,47 @@ angular.module('snekTrakr.services', [])
       sv.clutches.arr = data.data;
     });
   };
-  sv.getClutches();
 
 
+  sv.getClutch = function(id){
+    $http.get(routeToAPI.url + '/clutches/' + id).then(function(data){
+      // console.log(data.data[0]);
+      sv.clutch.info = data.data[0];
+      // $state.reload();
+    }).catch(function(err){
+      console.log(err);
 
+    });
+  };
+
+  sv.updateClutch = function(id, snake_id, date_layed, notes, number_layed, bad_eggs, number_hatched){
+    $http.put(routeToAPI.url + '/clutches/' + id, {
+      id: id,
+      snake_id: snake_id,
+      date_layed: date_layed,
+      notes: notes,
+      number_layed: number_layed,
+      bad_eggs: bad_eggs,
+      number_hatched: number_hatched
+    }).then(function(data){
+      console.log(data);
+      // $state.reload();
+      $state.go('tab.clutches');
+    }).catch(function(err){
+      console.log(err);
+    });
+  };
+
+  sv.deleteClutch = function(id){
+    $http.delete(routeToAPI.url + '/clutches/' + id)
+    .then(function(data){
+      console.log(data);
+      $state.go('tab.clutches');
+    }).catch(function(err){
+      console.log(err);
+
+    });
+  };
 
 }])
 

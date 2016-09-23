@@ -116,9 +116,20 @@ angular.module('snekTrakr', ['ionic', 'ngCordova', 'snekTrakr.controllers', 'sne
     url: '/clutches/:clutchId',
     views: {
       'clutches': {
-        templateUrl: 'templates/clutch-details.html',
+        templateUrl: 'templates/edit-clutch.html',
         controller: 'clutchDetailsController',
         controllerAs: 'cdc'
+      }
+    }
+  })
+
+  .state('tab.addClutch', {
+    url: '/clutches/new',
+    views: {
+      'clutches': {
+        templateUrl: 'templates/add-clutch.html',
+        controller: 'addClutchCtrl',
+        controllerAs: 'acc'
       }
     }
   });
