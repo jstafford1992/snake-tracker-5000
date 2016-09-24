@@ -460,6 +460,28 @@ angular.module('snekTrakr.services', [])
   };
 }])
 
+.service('CalendarService', ['$cordovaCalendar', '$scope', function($cordovaCalendar, $scope){
+
+    var sv = this;
+    // window.plugins.calendar.createEventInteractively(title,eventLocation,notes,startDate,endDate,success,error);
+    // sv.createEvent = function() {
+    //     $cordovaCalendar.createEvent({
+    //         title: 'Hello world',
+    //         location: 'Home',
+    //         notes: 'Bring sandwiches',
+    //         startDate: new Date(2016, 8, 24, 18, 30, 0, 0, 0),
+    //         endDate: new Date(2016, 8, 25, 12, 0, 0, 0, 0)
+    //     }).then(function (result) {
+    //         alert("Event created successfully");
+    //         console.log(result);
+    //     }, function (err) {
+    //       console.log(err);
+    //         alert("There was an error: ", err );
+    //     });
+    // };
+
+}])
+
 .service('PictureService', ['$cordovaCamera', function($cordovaCamera){
   var sv = this;
 

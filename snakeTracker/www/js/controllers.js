@@ -206,6 +206,30 @@ angular.module('snekTrakr.controllers', [])
   vm.message = "CLUTCH DETAILS CONTROLLER";
 
 
+}])
+
+.controller('calendarCtrl', ['$cordovaCalendar', function($cordovaCalendar){
+  var vm = this;
+
+  // vm.createEvent = CalendarService.createEvent;
+  console.log("calendarCtrl");
+  vm.createEvent = function() {
+    console.log("inside create Event");
+      $cordovaCalendar.createEvent({
+          title: 'Hello world',
+          location: 'Home',
+          notes: 'Bring sandwiches',
+          startDate: new Date(2016, 8, 24, 0, 0, 0, 0, 0),
+          endDate: new Date(2016, 8, 25, 0, 0, 0, 0, 0)
+      }).then(function (result) {
+          alert("Event created successfully");
+          console.log(result);
+      }, function (err) {
+        console.log(err);
+          alert("There was an error: ", err );
+      });
+  };
+
 }]);
 
 
