@@ -36,8 +36,7 @@ angular.module('snekTrakr.controllers', [])
 
 }])
 
-.controller('snakesDetailsCtrl', ['$scope', '$stateParams', 'SnakesService', '$location', '$state', function($scope, $stateParams, SnakesService, $location, $state) {
-  // $scope.chat = snakes.get($stateParams.chatId);
+.controller('snakesDetailsCtrl', ['$scope', '$stateParams', 'SnakesService', '$location', '$state', 'PictureService', function($scope, $stateParams, SnakesService, $location, $state, PictureService) {
   var vm = this;
   vm.message = "This is the Snake Details page Controller Message";
   vm.showEditSnake = false;
@@ -47,8 +46,7 @@ angular.module('snekTrakr.controllers', [])
   vm.showAddPairing = false;
 
   var path = $location.path().split('/');
-  // console.log(path);
-  // console.log(path[path.length - 1]);
+
   vm.getSnakeInfo = SnakesService.getSnakeInfo(path[path.length - 1]);
   vm.snake = SnakesService.snake;
 
@@ -84,6 +82,26 @@ angular.module('snekTrakr.controllers', [])
   // console.log(vm.snakes.males);
   // console.log(vm.snakes.females);
 
+  vm.openCamera = function(){
+    PictureService.openCamera().then(function(data){
+      // console.log(data);
+      vm.photo.image_url = data;
+    });
+  };
+
+  vm.openFilePicker = function(){
+
+    PictureService.openFilePicker().then(function(data){
+      vm.photo.image_url = data;
+    });
+
+  };
+
+
+  vm.photo = {};
+
+
+
 }])
 
 .controller('AccountCtrl', ['AccountService', function(AccountService) {
@@ -101,19 +119,43 @@ angular.module('snekTrakr.controllers', [])
 
 }])
 
-.controller('addSnakeCtrl', ['AddSnakeService', '$http', function(AddSnakeService, $http){
+.controller('addSnakeCtrl', ['AddSnakeService', '$http', 'PictureService', function(AddSnakeService, $http, PictureService){
   var vm = this;
   vm.message = "ADD A NEW SNAKE!";
  // console.log(routeToAPI.url);
 
   vm.newSnake = AddSnakeService.newSnake;
 
+  vm.photo = {};
+
+  vm.openCamera = function(){
+    PictureService.openCamera().then(function(data){
+      // console.log(data);
+      vm.photo.image_url = data;
+    });
+  };
+
+  vm.openFilePicker = function(){
+
+    PictureService.openFilePicker().then(function(data){
+      vm.photo.image_url = data;
+    });
+
+  };
+
+
+
+
 }])
 
-.controller('editSnakeCtrl', ['SnakesService', function($scope, SnakesService){
+.controller('editSnakeCtrl', ['SnakesService', 'PictureService', function($scope, SnakesService, PictureService){
   var vm = this;
   vm.message = "EDIT SNAKE";
 
+
+  // vm.openCamera = PictureService.openCamera;
+  //
+  // vm.openFilePicker = PictureService.openFilePicker;
 
 }])
 
@@ -155,13 +197,13 @@ angular.module('snekTrakr.controllers', [])
 
 }])
 
-.controller('pictureController', ['PictureService', function(PictureService){
-  var vm = this;
-  vm.takePicture = PictureService.openCamera;
-
-  vm.openGallery = PictureService.openFilePicker;
-
-}])
+// .controller('pictureController', ['PictureService', function(PictureService){
+//   var vm = this;
+//   vm.takePicture = PictureService.openCamera;
+//
+//   vm.openGallery = PictureService.openFilePicker;
+//
+// }])
 
 .controller('shedController', ['$http', 'SnakesService', function($http, SnakesService){
   var vm = this;
@@ -211,21 +253,40 @@ angular.module('snekTrakr.controllers', [])
 .controller('calendarCtrl', ['$cordovaCalendar', function($cordovaCalendar){
   var vm = this;
 
+  vm.event = {};
+  // console.log(vm.event);
   // vm.createEvent = CalendarService.createEvent;
-  console.log("calendarCtrl");
-  vm.createEvent = function() {
-    console.log("inside create Event");
+  // console.log("calendarCtrl");
+  vm.createEvent = function(title, location, notes, days) {
+
+
+    var d = new Date();
+    var d2 = new Date();
+    // console.log(d.setDate(d.getDate() + 50));
+    var days1 = d.setDate(d.getDate() + Number(days));
+    var days2 = d2.setDate(d2.getDate() + (Number(days) + 1));
+
+    var newEvent = {
+      title: title,
+      location: location,
+      notes: notes,
+      startDate: days1,
+      endDate: days2
+    };
+
+    // console.log("inside create Event", newEvent);
+
       $cordovaCalendar.createEvent({
-          title: 'Hello world',
-          location: 'Home',
-          notes: 'Bring sandwiches',
-          startDate: new Date(2016, 8, 24, 0, 0, 0, 0, 0),
-          endDate: new Date(2016, 8, 25, 0, 0, 0, 0, 0)
+          title: newEvent.title,
+          location: newEvent.location,
+          notes: newEvent.notes,
+          startDate: days1,
+          endDate: days2
       }).then(function (result) {
           alert("Event created successfully");
-          console.log(result);
+          // console.log(result);
       }, function (err) {
-        console.log(err);
+        // console.log(err);
           alert("There was an error: ", err );
       });
   };

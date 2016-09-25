@@ -68,7 +68,7 @@ angular.module('snekTrakr.services', [])
   sv.getAccountInfo = function(){
     $http.get(routeToAPI.url + '/user')
     .then(function(data){
-      console.log(data.data);
+      // console.log(data.data);
       sv.account.info = data.data[0];
     }).catch(function(err){
       console.log(err);
@@ -392,7 +392,7 @@ angular.module('snekTrakr.services', [])
 
   sv.getClutches = function(){
     $http.get(routeToAPI.url + '/clutches').then(function(data){
-      console.log(data.data);
+      // console.log(data.data);
       sv.clutches.arr = data.data;
     });
   };
@@ -485,6 +485,8 @@ angular.module('snekTrakr.services', [])
 .service('PictureService', ['$cordovaCamera', function($cordovaCamera){
   var sv = this;
 
+  sv.photo = {};
+
   sv. displayImage = function(imgUri) {
 
       var elem = document.getElementById('imageFile');
@@ -494,7 +496,7 @@ angular.module('snekTrakr.services', [])
   sv.openCamera = function() {
     var options = {
         // Some common settings are 20, 50, and 100
-        quality: 50,
+        quality: 100,
         destinationType: Camera.DestinationType.FILE_URI,
         // In this app, dynamically set the picture source, Camera or photo gallery
         sourceType: srcType,
@@ -513,7 +515,8 @@ angular.module('snekTrakr.services', [])
 
     return $cordovaCamera.getPicture(options).then(function(data){
       console.log(data);
-      return 'data:image/jpeg;base64,' + data;
+      sv.photo.image_url = data;
+      return data;
     });
 };
 
@@ -522,7 +525,7 @@ angular.module('snekTrakr.services', [])
       var srcType = Camera.PictureSourceType.SAVEDPHOTOALBUM;
       var options = {
           // Some common settings are 20, 50, and 100
-          quality: 50,
+          quality: 100,
           destinationType: Camera.DestinationType.FILE_URI,
           // In this app, dynamically set the picture source, Camera or photo gallery
           sourceType: srcType,
@@ -544,7 +547,8 @@ angular.module('snekTrakr.services', [])
 
       return $cordovaCamera.getPicture(options).then(function(data){
         console.log(data);
-        return 'data:image/jpeg;base64,' + data;
+        sv.photo.image_url = data;
+        return data;
       });
   };
 

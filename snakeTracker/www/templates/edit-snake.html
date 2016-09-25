@@ -13,8 +13,12 @@
     </select>
     <textarea name="notes" rows="8" cols="40" ng-model="sdc.snake.info.snake.notes"></textarea>
     <!-- Possible image upload here -->
+    <div class="">
+      <button type="button" name="button" ng-click="sdc.openCamera()">TAKE A PICTURE</button>
+      <button type="button" name="button" ng-click="sdc.openFilePicker()">Open A Gallery</button>
+    </div>
     <!-- Could use cloudinary or native -->
-    <input type="text" name="img_url" value="" placeholder="Image URL" ng-model="sdc.snake.info.snake.image_url">
-    <button type="submit" name="submit" ng-click="sdc.updateSnake(sdc.snake.info.snake.id, sdc.snake.info.snake.name, sdc.snake.info.snake.notes, sdc.snake.info.snake.sex, sdc.snake.info.snake.year_hatched, sdc.snake.info.snake.group, sdc.snake.info.snake.image_url)">Edit Snake</button>
+    <input type="text" name="img_url" value="" placeholder="Image URL" ng-model="sdc.photo.image_url">
+    <button type="submit" name="submit" ng-click="sdc.updateSnake(sdc.snake.info.snake.id, sdc.snake.info.snake.name, sdc.snake.info.snake.notes, sdc.snake.info.snake.sex, sdc.snake.info.snake.year_hatched, sdc.snake.info.snake.group, sdc.photo.image_url)">Edit Snake</button>
     <button ng-click="sdc.showEditSnake = !sdc.showEditSnake" class="button button-stable button-block">Close</button>
   </form>
