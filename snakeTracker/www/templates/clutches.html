@@ -9,6 +9,7 @@
     <br>
     <div class="card" ng-repeat="clutch in cc.clutches.arr | filter:{name: cc.search.name}" ng-click="cc.$state.go('tab.clutch-details', {clutchId: {{clutch.id}}});">
       <!-- {{clutch}} -->
+      <img ng-src="{{clutch.image_url}}" alt="clutch-image-here" height="150px" width="150px"/>
       <h4>Dame: {{clutch.name}}</h4>
       <h4>Date Layed: {{clutch.date_layed | date}}</h4>
       <h4>Notes: {{clutch.notes}}</h4>

@@ -6,13 +6,13 @@ angular.module('snekTrakr.services', [])
 //   "url": "http:10.7.80.106:3000"
 // })
 
-.constant("routeToAPI", {
-  "url": "http://localhost:3000"
-})
-
 // .constant("routeToAPI", {
-//   "url": "https://snek-trakr.herokuapp.com"
+//   "url": "http://localhost:3000"
 // })
+
+.constant("routeToAPI", {
+  "url": "https://snek-trakr.herokuapp.com"
+})
 .service('LoginController', ['$http', '$window', 'routeToAPI', '$location', '$ionicHistory', function($http, $window, routeToAPI, $location, $ionicHistory){
   var sv = this;
 
@@ -196,12 +196,13 @@ angular.module('snekTrakr.services', [])
 
   //FEEDING CRUD
 
-  sv.addFeedingInfo = function(rat_size, successful, attempted){
+  sv.addFeedingInfo = function(rat_size, successful, attempted, amount){
     $http.post(routeToAPI.url + '/feeding', {
       snake_id: sv.snake.info.snake.id,
       rat_size: rat_size,
       successful: successful,
-      attempted: attempted
+      attempted: attempted,
+      amount: amount
     }).then(function(data){
       console.log(data);
       $state.reload();
@@ -337,27 +338,6 @@ angular.module('snekTrakr.services', [])
 .service('SnakeDetailsService', ['$http', '$location', 'routeToAPI', function($http, $location, routeToAPI){
   var sv = this;
 
-
-  // sv.getSnakeInfo = function(id){
-  //   $http.get(routeToAPI.url + '/snakes/' + id)
-  //   .then(function(data){
-  //     console.log(data.data);
-  //     sv.snake.info = data.data;
-  //     console.log(sv.snake.info);
-  //     if (sv.snake.info.snake.sex === "male") {
-  //       sv.snake.gender = true;
-  //       console.log(sv.snake.gender);
-  //     } else {
-  //       sv.snake.gender = false;
-  //       console.log(sv.snake.gender);
-  //     }
-  //   });
-  // };
-
-  // sv.getPairingOptions = function(gender){
-  //   $http.get(routeToAPI.url + '/snakes')
-  // }
-
 }])
 
 .service('AddSnakeService', ['$http', 'routeToAPI', '$location', '$state', function($http, routeToAPI, $location, $state){
@@ -383,7 +363,7 @@ angular.module('snekTrakr.services', [])
   };
 }])
 
-.service('ClutchService', ['$http', 'routeToAPI', '$location', '$state', 'SnakesService', function($http, routeToAPI, $location, $state, SnakesService){
+.service('ClutchService', ['$http', 'routeToAPI', '$location', '$state', 'SnakesService', 'PictureService', function($http, routeToAPI, $location, $state, SnakesService, PictureService){
   var sv = this;
   // Clutch List functionality here
   sv.clutches = {};
@@ -415,7 +395,7 @@ angular.module('snekTrakr.services', [])
     });
   };
 
-  sv.updateClutch = function(id, snake_id, date_layed, notes, number_layed, bad_eggs, number_hatched){
+  sv.updateClutch = function(id, snake_id, date_layed, notes, number_layed, bad_eggs, number_hatched, image_url){
     $http.put(routeToAPI.url + '/clutches/' + id, {
       id: id,
       snake_id: snake_id,
@@ -423,7 +403,8 @@ angular.module('snekTrakr.services', [])
       notes: notes,
       number_layed: number_layed,
       bad_eggs: bad_eggs,
-      number_hatched: number_hatched
+      number_hatched: number_hatched,
+      image_url: image_url
     }).then(function(data){
       console.log(data);
       // $state.reload();
@@ -444,7 +425,7 @@ angular.module('snekTrakr.services', [])
     });
   };
 
-  sv.addClutch = function(snake_id, notes, date_layed, number_layed, bad_eggs){
+  sv.addClutch = function(snake_id, notes, date_layed, number_layed, bad_eggs, image_url){
     // "bad_eggs", "date_layed", "notes", "number_hatched", "number_layed", "snake_id"
     console.log(notes);
     $http.post(routeToAPI.url + '/clutches/new', {
@@ -452,7 +433,8 @@ angular.module('snekTrakr.services', [])
       notes: notes,
       date_layed: date_layed,
       number_layed: number_layed,
-      bad_eggs: bad_eggs
+      bad_eggs: bad_eggs,
+      image_url: image_url
     }).then(function(data){
       console.log(data);
 

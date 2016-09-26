@@ -19,7 +19,6 @@
         <button type="button" name="button" class="button" ng-click="sdc.showAddShed = !sdc.showAddShed" ng-disabled="sdc.showAddShed"><i class="icon ion-plus-circled"></i></button>
         <add-shed-dir ng-show="sdc.showAddShed"></add-shed-dir>
         <div class="padding" ng-repeat="shed in sdc.snake.info.shed">
-          {{shed}}
           Shed: {{shed.date_shed | date}}
           <button type="button" name="button" ng-click="sdc.deleteShedInfo({{shed.id}})"><i class="ion-trash-a"></i></button>
         </div>
@@ -42,7 +41,8 @@
         <div class="padding" ng-repeat="feed in sdc.snake.info.feed">
           <h6>Attempt: {{feed.attempted | date}}</h6>
           <h6>Success: {{feed.successful | date}}</h6>
-          {{feed}}
+          <h6>Size: {{feed.rat_size}}</h6>
+          <h6>Amount: {{feed.amount}}</h6>
           <button type="button" name="button" ng-click="sdc.deleteFeedingInfo({{feed.id}})"><i class="ion-trash-a"></i></button>
         </div>
       </div>

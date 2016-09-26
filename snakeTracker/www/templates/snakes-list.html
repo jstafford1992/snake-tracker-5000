@@ -10,20 +10,15 @@
     <br>
     <br>
     <div class="" ng-repeat="snake in sc.snakes.arr | filter:{name: sc.search.name}" ng-click="sc.$state.go('tab.snake-details', {snakeId: {{snake.id}}});">
-      <!-- ng-click="sc.$state.go('tab.snake-details', {snakeId: {{snake.id}}}); -->
-      <div class="card"   style="width: 250px; float: left; padding: 10px; margin: 10px;">
+      <div class="card"   style="width: 250px; float: left; padding: 10px; margin: 10px; float: clear-top">
       <img ng-src="{{snake.image_url}}" alt="snake-image-here" height="150px" width="150px"/>
-        <!-- <button type="button" name="button" ng-click="sc.getSnakeInfo({{snake.id}});">Get Snake Info</button> -->
-        <h4>{{snake.name}}</h4>
-        <h5>{{snake.notes}}</h5>
-        <h5>{{snake.sex}}</h5>
-        <h5>{{snake.group}}</h5>
-        <h5>{{snake.year_hatched | date : 'yyyy'}}</h5>
+        <h4>Name: {{snake.name}}</h4>
+        <h5>Notes: {{snake.notes}}</h5>
+        <h5>Gender: {{snake.sex}}</h5>
+        <h5>Age Group: {{snake.group}}</h5>
+        <h5>Hatched: {{snake.year_hatched | date : 'yyyy'}}</h5>
       </div>
     </div>
-
-
-    <h1>End of list</h1>
 
   </ion-content>
 </ion-view>

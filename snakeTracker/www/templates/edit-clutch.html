@@ -3,7 +3,6 @@
     <h1>Edit Clutch DETAILS HERE</h1>
     <h3>{{ecc.message}}</h3>
     <form class="" method="post">
-      <input type="id" name="dame" placeholder="Layed By" ng-model="ecc.clutch.info.snake_id">
       <select class="" name="">
         <option ng-repeat="female in ecc.snakes.females" value="female.id">{{female.name}}</option>
       </select>
@@ -17,10 +16,15 @@
       <input type="number" name="bad_eggs" ng-model="ecc.clutch.info.bad_eggs">
       <label for="Number of Eggs Hatched">Eggs Hatched</label>
       <input type="number" name="eggs_hatched" ng-model="ecc.clutch.info.number_hatched">
-      <button class="button button-light button-block ion-plus-round" type="submit" name="submit" ng-click="ecc.updateClutch(ecc.clutch.info.id, ecc.clutch.info.snake_id, ecc.clutch.info.date_layed, ecc.clutch.info.notes, ecc.clutch.info.number_layed, ecc.clutch.info.bad_eggs, ecc.clutch.info.number_hatched)">Edit Clutch</button>
+      <div class="">
+        <button type="button" name="button" ng-click="ecc.openCamera()">TAKE A PICTURE</button>
+        <button type="button" name="button" ng-click="ecc.openFilePicker()">Open A Gallery</button>
+      </div>
+      <input type="text" name="img_url" value="" placeholder="Image URL" ng-model="ecc.photo.image_url">
+
+      <button class="button button-light button-block ion-plus-round" type="submit" name="submit" ng-click="ecc.updateClutch(ecc.clutch.info.id, ecc.clutch.info.snake_id, ecc.clutch.info.date_layed, ecc.clutch.info.notes, ecc.clutch.info.number_layed, ecc.clutch.info.bad_eggs, ecc.clutch.info.number_hatched, ecc.photo.image_url)">Edit Clutch</button>
     </form>
     <button class="button button-light button-block" type="button" name="button" ng-click="ecc.deleteClutch(ecc.clutch.info.id)">Delete Clutch</button>
-
 
     <button class="button button-light button-block ion-plus-round" ng-click="ecc.showAddEvent = !ecc.showAddEvent" >Add To Calendar</button>
     <add-event-directive ng-show="ecc.showAddEvent"></add-event-directive>

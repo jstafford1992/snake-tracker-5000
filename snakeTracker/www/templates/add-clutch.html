@@ -18,7 +18,11 @@
       <input type="number" name="bad_eggs"  ng-model="acc.bad_eggs">
       <!-- <label for="Number of Eggs Hatched">Eggs Hatched</label>
       <input type="number" name="eggs_hatched" value=""> -->
-      <button type="submit" name="submit" ng-click="acc.addClutch(acc.snake_id,  acc.notes, acc.date_layed, acc.eggs_layed, acc.bad_eggs)">Add New Clutch</button>
+      <div class="">
+        <button type="button" name="button" ng-click="acc.openCamera()">TAKE A PICTURE</button>
+        <button type="button" name="button" ng-click="acc.openFilePicker()">Open A Gallery</button>
+      </div>
+      <button type="submit" name="submit" ng-click="acc.addClutch(acc.snake_id,  acc.notes, acc.date_layed, acc.eggs_layed, acc.bad_eggs, acc.photo.image_url)">Add New Clutch</button>
     </form>
   </ion-content>
 </ion-view>
