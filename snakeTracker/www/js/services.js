@@ -2,17 +2,17 @@
 
 angular.module('snekTrakr.services', [])
 
-// .constant("routeToAPI", {
-//   "url": "http:10.7.80.106:3000"
-// })
+.constant("routeToAPI", {
+  "url": "http:10.7.80.106:3000"
+})
 
 // .constant("routeToAPI", {
 //   "url": "http://localhost:3000"
 // })
 
-.constant("routeToAPI", {
-  "url": "https://snek-trakr.herokuapp.com"
-})
+// .constant("routeToAPI", {
+//   "url": "https://snek-trakr.herokuapp.com"
+// })
 .service('LoginController', ['$http', '$window', 'routeToAPI', '$location', '$ionicHistory', function($http, $window, routeToAPI, $location, $ionicHistory){
   var sv = this;
 
@@ -46,7 +46,7 @@ angular.module('snekTrakr.services', [])
     })
     .catch(function(err){
       console.log(err);
-      console.log(err.data.message);
+      // console.log(err.data.message);
 
     });
 

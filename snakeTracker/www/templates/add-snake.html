@@ -23,9 +23,9 @@
         <button type="button" name="button" ng-click="asc.openFilePicker()">Open A Gallery</button>
       </div>
       <!-- Could use cloudinary or native -->
-      <input type="text" name="url" value="" placeholder="URL" ng-model="asc.url">
+      <!-- <input type="text" name="url" value="" placeholder="URL" ng-model="asc.url"> -->
       <input type="text" name="img_url" value="" placeholder="Image URL" ng-model="asc.photo.image_url">
-      <button type="submit" name="submit" ng-click="asc.newSnake(asc.name, asc.sex, asc.hatch_year, asc.group, asc.notes, asc.url, asc.photo.image_url)">Add Snake!</button>
+      <button class="button button-light button-block ion-plus-round" type="submit" name="submit" ng-click="asc.newSnake(asc.name, asc.sex, asc.hatch_year, asc.group, asc.notes, asc.url, asc.photo.image_url)">Add Snake!</button>
     </form>
   </ion-content>
 </ion-view>

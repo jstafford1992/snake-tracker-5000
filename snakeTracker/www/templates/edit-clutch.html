@@ -7,7 +7,7 @@
         <option ng-repeat="female in ecc.snakes.females" value="female.id">{{female.name}}</option>
       </select>
       <br>
-      Date Layed: {{ecc.clutch.info.date_layed | date }}
+      <h4>Date Layed: {{ecc.clutch.info.date_layed | date }}</h4>
       <input type="date" name="date_layed" value="" placeholder="Date Layed" ng-model="ecc.clutch.info.date_layed">
       <textarea name="name" rows="8" cols="40" ng-model="ecc.clutch.info.notes"></textarea>
       <label for="eggs_layed">Number of Eggs Layed</label>

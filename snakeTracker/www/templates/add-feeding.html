@@ -13,6 +13,6 @@
     <option value="exta-large">X-large</option>
   </select>
   <input type="number" name="amount" value="" ng-model="sdc.amount">
-  <button type="button" name="button" ng-click="sdc.addFeedingInfo(sdc.rat_size, sdc.date_successful, sdc.date_attempted, sdc.amount)">Add Feeding</button>
+  <button class="button button-light button-block ion-plus-round" type="button" name="button" ng-click="sdc.addFeedingInfo(sdc.rat_size, sdc.date_successful, sdc.date_attempted, sdc.amount)">Add Feeding</button>
   <button ng-click="sdc.showAddFeeding = !sdc.showAddFeeding;" class="button button-stable button-block">Close</button>
 </form>

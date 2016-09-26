@@ -202,7 +202,7 @@ angular.module('snekTrakr.controllers', [])
 
 }])
 
-.controller('editClutchCtrl', [ '$stateParams', 'ClutchService', '$location', '$state', 'SnakesService', function($stateParams, ClutchService, $location, $state, SnakesService) {
+.controller('editClutchCtrl', [ '$stateParams', 'ClutchService', '$location', '$state', 'SnakesService', 'PictureService', function($stateParams, ClutchService, $location, $state, SnakesService, PictureService) {
   var vm = this;
   vm.message = 'EDIT CLUTCH';
   // vm.clutch = {};
@@ -223,8 +223,23 @@ angular.module('snekTrakr.controllers', [])
 
   vm.snakes.females = SnakesService.snakes.females;
 
-  // console.log(vm.snakes.females);
+  vm.openCamera = function(){
+    PictureService.openCamera().then(function(data){
+      // console.log(data);
+      vm.photo.image_url = data;
+    });
+  };
 
+  vm.openFilePicker = function(){
+
+    PictureService.openFilePicker().then(function(data){
+      vm.photo.image_url = data;
+    });
+
+  };
+
+
+  vm.photo = {};
 
 }])
 

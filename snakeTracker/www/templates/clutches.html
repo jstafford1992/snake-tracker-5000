@@ -7,7 +7,7 @@
   </ion-content>
   <ion-content class="padding">
     <br>
-    <div class="card" ng-repeat="clutch in cc.clutches.arr | filter:{name: cc.search.name}" ng-click="cc.$state.go('tab.clutch-details', {clutchId: {{clutch.id}}});">
+    <div class="card" ng-repeat="clutch in cc.clutches.arr | filter:{name: cc.search.name}" ng-click="cc.$state.go('tab.clutch-details', {clutchId: {{clutch.id}}});" style="width: 95%; float: left; padding: 10px; margin: 10px; float: clear-top; text-align: center">
       <!-- {{clutch}} -->
       <img ng-src="{{clutch.image_url}}" alt="clutch-image-here" height="150px" width="150px"/>
       <h4>Dame: {{clutch.name}}</h4>
