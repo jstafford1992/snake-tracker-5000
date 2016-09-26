@@ -123,7 +123,7 @@ angular.module('snekTrakr.services', [])
         }
       }
 
-      console.log(sv.snakes.arr);
+      // console.log(sv.snakes.arr);
       // console.log(sv.snakes.males);
       // console.log(sv.snakes.females);
     })

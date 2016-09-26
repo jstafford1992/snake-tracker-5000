@@ -1,10 +1,14 @@
 <ion-view view-title="Clutches" cache-view="false">
+  <ion-content scroll="false">
+  	<div class="bar bar-header bar-positive">
+      <input type="text" name="search" ng-model="cc.search.name" placeholder="Search by Name">
+      <button type="button" name="addClutch" ng-click="cc.$state.go('tab.addClutch')">Add Clutch</button>
+  	</div>
+  </ion-content>
   <ion-content class="padding">
-    <h1 class="">Clutches</h1>
-    <button type="button" name="addClutch" ng-click="cc.$state.go('tab.addClutch')">Add Clutch</button>
-    <div class="card" ng-repeat="clutch in cc.clutches.arr" ng-click="cc.$state.go('tab.clutch-details', {clutchId: {{clutch.id}}});">
-
-      {{clutch}}
+    <br>
+    <div class="card" ng-repeat="clutch in cc.clutches.arr | filter:{name: cc.search.name}" ng-click="cc.$state.go('tab.clutch-details', {clutchId: {{clutch.id}}});">
+      <!-- {{clutch}} -->
       <h4>Dame: {{clutch.name}}</h4>
       <h4>Date Layed: {{clutch.date_layed | date}}</h4>
       <h4>Notes: {{clutch.notes}}</h4>

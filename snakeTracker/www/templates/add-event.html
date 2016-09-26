@@ -1,0 +1,16 @@
+<div class="" ng-controller="calendarCtrl as calCtrl">
+  <form class="" method="post">
+    <label for="title">Title: </label>
+    <input type="text" name="title" value="Clutch {{ecc.clutch.info.id}} should be pipping soon" ng-model="calCtrl.events.title">
+    <br>
+    <label for="Location">Location: </label>
+    <input type="text" name="location" value="" ng-model="calCtrl.events.location">
+    <br>
+    <label for="notes">Notes: </label>
+    <textarea name="" rows="8" cols="40" placeholder="{{ecc.clutch.info.notes}}" ng-model="calcCtrl.event.notes"></textarea>
+    <br>
+    <label for="days">What day would you like to be notified to check clutch? <small>If not specified will be 55 days from the current date</small></label>
+    <input type="number" name="days" ng-model="calcCtrl.event.days">
+  </form>
+  <button class="button button-light button-block ion-plus-round" type="button" name="button" ng-click="calCtrl.createEvent(calCtrl.events.title, calCtrl.events.location, calcCtrl.event.notes, calcCtrl.event.days)">Create Event!</button>
+</div>

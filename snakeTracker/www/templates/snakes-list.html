@@ -1,12 +1,17 @@
 <ion-view view-title="Snakes List" cache-view="false">
+
+  <ion-content scroll="false">
+  	<div class="bar bar-header bar-positive">
+      <input type="text" name="search" ng-model="sc.search.name" placeholder="Search by Name">
+      <button type="button" name="addSnakeBtn" ng-click="sc.$state.go('tab.addSnake');"><i class="icon ion-plus-circled"> Add Snake</i></button>
+  	</div>
+  </ion-content>
   <ion-content class="padding">
-    <h1>This will become main Snakes page</h1>
-    <h3>{{sc.message}}</h3>
-    <input type="text" name="search" ng-model="sc.search.name" placeholder="Search by Name">
-    <button type="button" name="addSnakeBtn" ng-click="sc.$state.go('tab.addSnake');"><i class="icon ion-plus-circled"> Add Snake</i></button>
-    <div class="" ng-repeat="snake in sc.snakes.arr | filter:{name: sc.search.name} | orderBy: name" ng-click="sc.$state.go('tab.snake-details', {snakeId: {{snake.id}}});">
+    <br>
+    <br>
+    <div class="" ng-repeat="snake in sc.snakes.arr | filter:{name: sc.search.name}" ng-click="sc.$state.go('tab.snake-details', {snakeId: {{snake.id}}});">
       <!-- ng-click="sc.$state.go('tab.snake-details', {snakeId: {{snake.id}}}); -->
-      <div class="card"   style="width: 300px; float: left; padding: 10px; margin: 10px;">
+      <div class="card"   style="width: 250px; float: left; padding: 10px; margin: 10px;">
       <img ng-src="{{snake.image_url}}" alt="snake-image-here" height="150px" width="150px"/>
         <!-- <button type="button" name="button" ng-click="sc.getSnakeInfo({{snake.id}});">Get Snake Info</button> -->
         <h4>{{snake.name}}</h4>

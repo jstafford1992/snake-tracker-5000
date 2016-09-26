@@ -81,4 +81,13 @@ angular.module('snekTrakr.directives', [])
     controller: 'addPairingController',
     controllerAs: 'apc'
   };
+})
+
+.directive('addEventDirective', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'templates/add-event.html',
+    controller: 'calendarCtrl',
+    controllerAs: 'calCtrl'
+  };
 });

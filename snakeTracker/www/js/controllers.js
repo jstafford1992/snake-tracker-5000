@@ -194,6 +194,7 @@ angular.module('snekTrakr.controllers', [])
 
   vm.deleteClutch = ClutchService.deleteClutch;
 
+  vm.showAddEvent = false;
 
 }])
 
