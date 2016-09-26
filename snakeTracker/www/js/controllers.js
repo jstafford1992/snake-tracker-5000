@@ -159,7 +159,7 @@ angular.module('snekTrakr.controllers', [])
 
 }])
 
-.controller('clutchesCtrl', ['ClutchService', '$state', '$location', function(ClutchService, $state, $location){
+.controller('clutchesCtrl', ['ClutchService', '$state', '$location', 'SnakesService', function(ClutchService, $state, $location, SnakesService){
   var vm = this;
   vm.message = "LIST CLUTCHES";
 
@@ -172,14 +172,20 @@ angular.module('snekTrakr.controllers', [])
 
 }])
 
-.controller('addClutchCtrl', function() {
+.controller('addClutchCtrl', ['SnakesService', 'ClutchService', function(SnakesService, ClutchService) {
   var vm = this;
   vm.message = "ADD CLUTCH";
 
+  vm.snakes = {};
 
-})
+  vm.snakes.females = SnakesService.snakes.females;
 
-.controller('editClutchCtrl', [ '$stateParams', 'ClutchService', '$location', '$state', function($stateParams, ClutchService, $location, $state) {
+  vm.addClutch = ClutchService.addClutch;
+  
+  // console.log(vm.snakes.females);
+}])
+
+.controller('editClutchCtrl', [ '$stateParams', 'ClutchService', '$location', '$state', 'SnakesService', function($stateParams, ClutchService, $location, $state, SnakesService) {
   var vm = this;
   vm.message = 'EDIT CLUTCH';
   // vm.clutch = {};
@@ -195,6 +201,13 @@ angular.module('snekTrakr.controllers', [])
   vm.deleteClutch = ClutchService.deleteClutch;
 
   vm.showAddEvent = false;
+
+  vm.snakes = {};
+
+  vm.snakes.females = SnakesService.snakes.females;
+
+  // console.log(vm.snakes.females);
+
 
 }])
 
@@ -255,6 +268,8 @@ angular.module('snekTrakr.controllers', [])
   var vm = this;
 
   vm.event = {};
+
+  vm.message = "calendarCtrl"
   // console.log(vm.event);
   // vm.createEvent = CalendarService.createEvent;
   // console.log("calendarCtrl");

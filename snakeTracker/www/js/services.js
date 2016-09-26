@@ -383,12 +383,18 @@ angular.module('snekTrakr.services', [])
   };
 }])
 
-.service('ClutchService', ['$http', 'routeToAPI', '$location', '$state', function($http, routeToAPI, $location, $state){
+.service('ClutchService', ['$http', 'routeToAPI', '$location', '$state', 'SnakesService', function($http, routeToAPI, $location, $state, SnakesService){
   var sv = this;
   // Clutch List functionality here
   sv.clutches = {};
 
   sv.clutch = {};
+
+  sv.snakes = {};
+
+  sv.snakes.females = SnakesService.snakes.females;
+
+  // console.log(sv.snakes.females);
 
   sv.getClutches = function(){
     $http.get(routeToAPI.url + '/clutches').then(function(data){
@@ -437,6 +443,26 @@ angular.module('snekTrakr.services', [])
 
     });
   };
+
+  sv.addClutch = function(snake_id, notes, date_layed, number_layed, bad_eggs){
+    // "bad_eggs", "date_layed", "notes", "number_hatched", "number_layed", "snake_id"
+    console.log(notes);
+    $http.post(routeToAPI.url + '/clutches/new', {
+      snake_id: snake_id,
+      notes: notes,
+      date_layed: date_layed,
+      number_layed: number_layed,
+      bad_eggs: bad_eggs
+    }).then(function(data){
+      console.log(data);
+
+      $state.go('tab.clutches');
+    }).catch(function(err){
+      console.log(err);
+
+    });
+  };
+
 
 }])
 

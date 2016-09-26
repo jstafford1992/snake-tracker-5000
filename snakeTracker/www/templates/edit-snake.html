@@ -19,6 +19,6 @@
     </div>
     <!-- Could use cloudinary or native -->
     <input type="text" name="img_url" value="" placeholder="Image URL" ng-model="sdc.photo.image_url">
-    <button type="submit" name="submit" ng-click="sdc.updateSnake(sdc.snake.info.snake.id, sdc.snake.info.snake.name, sdc.snake.info.snake.notes, sdc.snake.info.snake.sex, sdc.snake.info.snake.year_hatched, sdc.snake.info.snake.group, sdc.photo.image_url)">Edit Snake</button>
+    <button class="button button-light button-block" type="button" name="submit" ng-click="sdc.updateSnake(sdc.snake.info.snake.id, sdc.snake.info.snake.name, sdc.snake.info.snake.notes, sdc.snake.info.snake.sex, sdc.snake.info.snake.year_hatched, sdc.snake.info.snake.group, sdc.photo.image_url)">Edit Snake</button>
     <button ng-click="sdc.showEditSnake = !sdc.showEditSnake" class="button button-stable button-block">Close</button>
   </form>

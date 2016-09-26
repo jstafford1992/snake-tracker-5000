@@ -12,27 +12,13 @@
         <label for="password">PASSWORD</label>
         <input type="password" name="password" value="" placeholder="Password" ng-model="loginForm.password">
         <br>
-        <button type="button" name="login" ng-click="lc.login(loginForm.email, loginForm.password)">Login</button>
+        <button style="background-color: green" class="button button-light button-block" type="button" name="login" ng-click="lc.login(loginForm.email, loginForm.password)">Login</button>
       </form>
       <h4>or signup here!</h4>
-      <button type="button" name="signup" ng-click="lc.signup(loginForm.email, loginForm.password)">Signup</button>
+      <button class="button button-light button-block" type="button" name="signup" ng-click="lc.signup(loginForm.email, loginForm.password)">Signup</button>
     </div>
-    <div class="">
-      <button type="button" name="logout" ng-click="lc.logout()">Logout</button>
+    <div class="" >
+      <button style="background-color: red" class="button button-light button-block" type="button" name="logout" ng-click="lc.logout()">Logout</button>
     </div>
-
-    <!-- Nuke Below this comment  -->
-    <p>
-      If logged in Would like to route to snakes listing page
-    </p>
-
-    <h4>Message: {{lc.message}}</h4>
-    <p>
-      For help sending push notifications, join the <a href="https://apps.ionic.io/signup" target="_blank">Ionic Platform</a> and check out <a href="http://docs.ionic.io/docs/push-overview" target="_blank">Ionic Push</a>. We also have other services available.
-    </p>
-
-
-
-    <!-- Nuke Above this comment -->
   </ion-content>
 </ion-view>
