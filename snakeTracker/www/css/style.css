@@ -1,4 +1,30 @@
 /* Empty. Add your own CSS if you like */
 ion-content {
-  background-color: #C7EFCF
+  background-color: #EEF1BD;
+  color: #2F4F4F;
+}
+
+#lightGreen {
+  background-color: #EEF1BD;
+}
+
+#green {
+  background-color: #BBD686;
+}
+
+#beige {
+  background-color: #C4A381;
+}
+
+#red {
+  background-color: #B2675E;
+}
+
+#brown {
+  background-color: #644536;
+}
+
+
+.search {
+  background-color: #BBD686;
 }

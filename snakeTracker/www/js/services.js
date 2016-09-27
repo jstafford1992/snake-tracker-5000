@@ -6,23 +6,23 @@ angular.module('snekTrakr.services', [])
 //   "url": "http:10.7.80.106:3000"
 // })
 
-.constant("routeToAPI", {
-  "url": "http://localhost:3000"
-})
-
 // .constant("routeToAPI", {
-//   "url": "https://snek-trakr.herokuapp.com"
+//   "url": "http://localhost:3000"
 // })
+
+.constant("routeToAPI", {
+  "url": "https://snek-trakr.herokuapp.com"
+})
 .service('LoginService', ['$http', '$window', 'routeToAPI', '$location', '$ionicHistory', '$state', function($http, $window, routeToAPI, $location, $ionicHistory, $state){
   var sv = this;
-
+  sv.login = {};
 
   sv.login = function(email, password){
     return new Promise(function(resolve, reject){
       $http.post(routeToAPI.url + '/login', {email: email, password: password})
       .then(function(data) {
         // console.log(data);
-        sv.loggedIn = true;
+        sv.login.loggedIn = true;
         $window.sessionStorage.token = data.data.token;
         $window.sessionStorage.id = data.data.id;
         $location.path('/tab/snakesList');
@@ -43,7 +43,7 @@ angular.module('snekTrakr.services', [])
       $window.sessionStorage.token = data.data.token;
       $window.sessionStorage.id = data.data.id;
       // $state.reload();
-      sv.loggedIn = true;
+      sv.login.loggedIn = true;
       $location.path('/tab/snakesList');
     })
     .catch(function(err){
@@ -63,7 +63,7 @@ angular.module('snekTrakr.services', [])
     $state.reload();
   };
 
-  console.log(sv.loggedIn);
+  console.log(sv.login.loggedIn);
 
 }])
 
@@ -125,7 +125,7 @@ angular.module('snekTrakr.services', [])
       for(var i = 0; i < sv.snakes.arr.length; i++){
         if(sv.snakes.arr[i].group === "breeder" && sv.snakes.arr[i].sex === "male"){
           sv.snakes.males.push(sv.snakes.arr[i]);
-        } else {
+        } else if (sv.snakes.arr[i].group === "breeder" && sv.snakes.arr[i].sex === "female") {
           sv.snakes.females.push(sv.snakes.arr[i]);
         }
       }
@@ -284,7 +284,7 @@ angular.module('snekTrakr.services', [])
     $http.delete(routeToAPI.url + '/snakes/' + id)
     .then(function(data){
       console.log(data);
-      $state.reload();
+      $state.go('tab.snakesList');
     }).catch(function(err){
       console.log(err);
     });

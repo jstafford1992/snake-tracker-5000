@@ -7,12 +7,16 @@ angular.module('snekTrakr.controllers', [])
 
   var vm = this;
 
+
+
   vm.message = "This is the Controller for the login page";
 
   vm.login = LoginService.login;
   vm.logout = LoginService.logout;
 
   vm.signup = LoginService.signup;
+
+  vm.loggedIn = LoginService.login.loggedIn;
 
 }])
 
@@ -49,6 +53,9 @@ angular.module('snekTrakr.controllers', [])
 
   vm.getSnakeInfo = SnakesService.getSnakeInfo(path[path.length - 1]);
   vm.snake = SnakesService.snake;
+
+  vm.deleteSnake = SnakesService.deleteSnake;
+
 
   vm.deleteShedInfo = SnakesService.deleteShedInfo;
   vm.addShedInfo = SnakesService.addShedInfo;
@@ -104,7 +111,7 @@ angular.module('snekTrakr.controllers', [])
 
 }])
 
-.controller('AccountCtrl', ['AccountService', function(AccountService) {
+.controller('AccountCtrl', ['AccountService', 'LoginService', function(AccountService, LoginService) {
 
   var vm = this;
   vm.message = "This is the Controller for the Account page";
@@ -116,6 +123,8 @@ angular.module('snekTrakr.controllers', [])
   vm.account = AccountService.account;
 
   vm.updateAccount = AccountService.updateAccount;
+
+  vm.loggedIn = LoginService.login.loggedIn;
 
 }])
 
