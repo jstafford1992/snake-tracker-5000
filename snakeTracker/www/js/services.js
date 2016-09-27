@@ -13,14 +13,14 @@ angular.module('snekTrakr.services', [])
 // .constant("routeToAPI", {
 //   "url": "https://snek-trakr.herokuapp.com"
 // })
-.service('LoginController', ['$http', '$window', 'routeToAPI', '$location', '$ionicHistory', function($http, $window, routeToAPI, $location, $ionicHistory){
+.service('LoginService', ['$http', '$window', 'routeToAPI', '$location', '$ionicHistory', function($http, $window, routeToAPI, $location, $ionicHistory){
   var sv = this;
 
   sv.login = function(email, password){
     return new Promise(function(resolve, reject){
       $http.post(routeToAPI.url + '/login', {email: email, password: password})
       .then(function(data) {
-        console.log(data);
+        // console.log(data);
 
         $window.sessionStorage.token = data.data.token;
         $window.sessionStorage.id = data.data.id;
@@ -85,7 +85,7 @@ angular.module('snekTrakr.services', [])
     }).then(function(data){
       console.log(data);
       sv.logout();
-      $state.go('tab.login');
+      $state.go('tab.account');
 
     }).catch(function(err){
       console.log(err);
@@ -542,8 +542,8 @@ angular.module('snekTrakr.services', [])
           allowEdit: true,
           correctOrientation: true  //Corrects Android orientation quirks
       };
-      options.targetHeight = 100;
-      options.targetWidth = 100;
+      // options.targetHeight = 100;
+      // options.targetWidth = 100;
       // var func = createNewFileEntry;
 
       // if (selection == "picker-thmb") {

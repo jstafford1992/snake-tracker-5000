@@ -1,7 +1,7 @@
-<ion-view view-title="Snakes List" cache-view="false">
+<ion-view hide-nav-bar="true" cache-view="false">
 
   <ion-content scroll="false">
-  	<div class="bar bar-header bar-positive">
+  	<div class="bar bar-header bar-balanced">
       <input type="text" name="search" ng-model="sc.search.name" placeholder="Search by Name">
       <button type="button" name="addSnakeBtn" ng-click="sc.$state.go('tab.addSnake');"><i class="icon ion-plus-circled"> Add Snake</i></button>
   	</div>
@@ -10,10 +10,12 @@
     <br>
     <br>
     <div class="" ng-repeat="snake in sc.snakes.arr | filter:{name: sc.search.name}" ng-click="sc.$state.go('tab.snake-details', {snakeId: {{snake.id}}});">
-      <div class="card"   style="width: 95%; float: left; padding: 10px; margin: 10px; float: clear-top; text-align: center">
-      <img   ng-src="{{snake.image_url}}" alt="snake-image-here" height="200px" width="200px"/>
+      <div class="card"   style="width: 95%; float: left; padding: 10px; margin: 10px; float: clear-top;">
+        <div class="" style="float: left;">
+          <img   ng-src="{{snake.image_url}}" alt="snake-image-here" height="200px" width="200px" style="padding: 10px; margin: 5px"/>
+        </div>
         <h4>Name: {{snake.name}}</h4>
-        <h5>Notes: {{snake.notes}}</h5>
+        <!-- <h5>Notes: {{snake.notes}}</h5> -->
         <h5>Gender: {{snake.sex}}</h5>
         <h5>Age Group: {{snake.group}}</h5>
         <h5>Hatched: {{snake.year_hatched | date : 'yyyy'}}</h5>

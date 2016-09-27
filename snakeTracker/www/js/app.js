@@ -47,13 +47,13 @@ angular.module('snekTrakr', ['ionic', 'ngCordova', 'snekTrakr.controllers', 'sne
 
   // Each tab has its own nav history stack:
 
-  .state('tab.login', {
-    url: '/login',
+  .state('tab.account', {
+    url: '/account',
     views: {
-      'login': {
-        templateUrl: 'templates/login.html',
-        controller: 'loginCtrl',
-        controllerAs: 'lc'
+      'account': {
+        templateUrl: 'templates/account.html',
+        controller: 'AccountCtrl',
+        controllerAs: 'ac'
       }
     }
   })
@@ -90,17 +90,6 @@ angular.module('snekTrakr', ['ionic', 'ngCordova', 'snekTrakr.controllers', 'sne
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'account': {
-        templateUrl: 'templates/account.html',
-        controller: 'AccountCtrl',
-        controllerAs: 'ac'
-      }
-    }
-  })
-
   .state('tab.clutches', {
     url: '/clutches',
     views: {
@@ -135,6 +124,6 @@ angular.module('snekTrakr', ['ionic', 'ngCordova', 'snekTrakr.controllers', 'sne
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/login');
+  $urlRouterProvider.otherwise('/tab/account');
 
 });

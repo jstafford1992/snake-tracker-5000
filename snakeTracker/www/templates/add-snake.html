@@ -1,28 +1,31 @@
-<ion-view view-title="Add Snake">
+<ion-view view-title="Add Snake" cache-view="false">
   <ion-content class="padding" ng-controller="addSnakeCtrl as asc">
-    <h1>This will become main Add Snake page</h1>
-    <h3>{{asc.message}}</h3>
     <form class="" method="post">
       <input type="text" name="name" placeholder="Snake Name/Identifier" ng-model="asc.name">
+      <br>
+      <label for="gender">Gender</label>
       <select class="" name="gender" ng-model="asc.sex">
         <option value="male">Male</option>
         <option value="female">Female</option>
       </select>
+      <br>
       <label for="hatch_year">Hatch Year</label>
       <input type="date" name="hatch_year" ng-model="asc.hatch_year">
+      <br>
+      <label for="group">Age Group: </label>
       <select class="" name="group" ng-model="asc.group">
         <option value="breeder">Breeder</option>
         <option value="yearling">Yearling</option>
         <option value="hatchling">Hatchling</option>
       </select>
-      <label for="notes">Notes:</label>
-      <textarea name="notes" rows="5" cols="30" ng-model="asc.notes"></textarea>
-      <!-- Possible image upload here -->
+      <div class="">
+        <label for="notes">Notes:</label>
+        <textarea name="notes" rows="5" cols="25" ng-model="asc.notes"></textarea>
+      </div>
       <div class="">
         <button type="button" name="button" ng-click="asc.openCamera()">TAKE A PICTURE</button>
         <button type="button" name="button" ng-click="asc.openFilePicker()">Open A Gallery</button>
       </div>
-      <!-- Could use cloudinary or native -->
       <!-- <input type="text" name="url" value="" placeholder="URL" ng-model="asc.url"> -->
       <input type="text" name="img_url" value="" placeholder="Image URL" ng-model="asc.photo.image_url">
       <button class="button button-light button-block ion-plus-round" type="submit" name="submit" ng-click="asc.newSnake(asc.name, asc.sex, asc.hatch_year, asc.group, asc.notes, asc.url, asc.photo.image_url)">Add Snake!</button>

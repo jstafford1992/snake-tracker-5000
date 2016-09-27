@@ -1,7 +1,6 @@
-<ion-view view-title="Add Clutch" ng-controller="addClutchCtrl as acc">
+<ion-view view-title="Add Clutch" ng-controller="addClutchCtrl as acc" cache-view="false">
   <ion-content class="padding">
-    <h3>{{acc.message}}</h3>
-    <h1>Add Clutch DETAILS HERE</h1>
+    <h1>Add Clutch</h1>
     <form class="" method="post">
       <select class="" name="dame" ng-model="acc.snake_id">
         <option ng-repeat="female in acc.snakes.females" value="{{female.id}}">{{female.name}}</option>
@@ -9,8 +8,9 @@
       <br>
       <input type="date" name="date_layed" ng-model="acc.date_layed">
       <br>
-      <input type="text" name="name" value="" ng-model="acc.notes" >
-      <!-- <textarea name="name" rows="5" cols="30" ></textarea> -->
+      <label for="notes">Notes: </label>
+      <!-- <input type="text" name="notes" value=""  > -->
+      <textarea name="name" rows="5" cols="25" ng-model="acc.notes"></textarea>
       <br>
       <label for="eggs_layed">Number of Eggs Layed</label>
       <input type="number" name="eggs_layed"  ng-model="acc.eggs_layed">
@@ -19,10 +19,13 @@
       <!-- <label for="Number of Eggs Hatched">Eggs Hatched</label>
       <input type="number" name="eggs_hatched" value=""> -->
       <div class="">
+        <input ng-src="acc.photo.image_url" type="text" name="name" value="">
+        <!-- <img ng-src="acc.photo.image_url" alt="add-clutch-image" height="150px" width="150px"/> -->
+        <br>
         <button type="button" name="button" ng-click="acc.openCamera()">TAKE A PICTURE</button>
         <button type="button" name="button" ng-click="acc.openFilePicker()">Open A Gallery</button>
       </div>
-      <button type="submit" name="submit" ng-click="acc.addClutch(acc.snake_id,  acc.notes, acc.date_layed, acc.eggs_layed, acc.bad_eggs, acc.photo.image_url)">Add New Clutch</button>
+      <button class="button button-light button-block" type="submit" name="submit" ng-click="acc.addClutch(acc.snake_id,  acc.notes, acc.date_layed, acc.eggs_layed, acc.bad_eggs, acc.photo.image_url)">Add New Clutch</button>
     </form>
   </ion-content>
 </ion-view>

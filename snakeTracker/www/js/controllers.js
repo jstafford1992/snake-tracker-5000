@@ -2,17 +2,17 @@
 
 angular.module('snekTrakr.controllers', [])
 
-.controller('loginCtrl', ['$scope', 'LoginController', function($scope, LoginController) {
+.controller('loginCtrl', ['$scope', 'LoginService', function($scope, LoginService) {
 
 
   var vm = this;
 
   vm.message = "This is the Controller for the login page";
 
-  vm.login = LoginController.login;
-  vm.logout = LoginController.logout;
+  vm.login = LoginService.login;
+  vm.logout = LoginService.logout;
 
-  vm.signup = LoginController.signup;
+  vm.signup = LoginService.signup;
 
 }])
 
