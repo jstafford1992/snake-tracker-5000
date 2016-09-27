@@ -3,6 +3,7 @@
     <h1>Edit Clutch DETAILS HERE</h1>
     <h3>{{ecc.message}}</h3>
     <form class="" method="post">
+      <label for="dame">Dam: </label>
       <select class="" name="">
         <option ng-repeat="female in ecc.snakes.females" value="female.id">{{female.name}}</option>
       </select>
@@ -11,7 +12,7 @@
       <input type="date" name="date_layed" value="" placeholder="Date Layed" ng-model="ecc.clutch.info.date_layed">
 
       <h4>Notes: </h4>
-      <textarea name="name" rows="8" cols="40" ng-model="ecc.clutch.info.notes"></textarea>
+      <textarea name="name" rows="5" cols="25" value="{{ecc.clutch.info.notes}}" ng-model="ecc.clutch.info.notes"></textarea>
       <label for="eggs_layed">Number of Eggs Layed</label>
       <input type="number" name="number_layed" ng-model="ecc.clutch.info.number_layed">
       <label for="bad_eggs">Infertile Eggs</label>

@@ -6,12 +6,14 @@
     </select>
     <label for="hatch_year">Hatch Year</label>
     <input type="date" name="hatch_year" ng-model="sdc.snake.info.snake.year_hatched">
+    <label for="age">Group</label>
     <select class="" name="age" ng-model="sdc.snake.info.snake.group">
       <option value="breeder">Breeder</option>
       <option value="yearling">Yearling</option>
       <option value="hatchling">Hatchling</option>
     </select>
-    <textarea name="notes" rows="8" cols="40" ng-model="sdc.snake.info.snake.notes"></textarea>
+    <br>
+    <textarea name="notes" rows="5" cols="30" value="{{sdc.snake.info.snake.notes}}" ng-model="sdc.snake.info.snake.notes"></textarea>
     <div class="">
       <button type="button" name="button" ng-click="sdc.openCamera()">TAKE A PICTURE</button>
       <button type="button" name="button" ng-click="sdc.openFilePicker()">Open A Gallery</button>

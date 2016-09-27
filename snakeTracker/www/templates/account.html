@@ -1,5 +1,28 @@
 <ion-view hide-nav-bar="true">
   <ion-content class="padding" ng-controller="AccountCtrl as ac">
+
+    <h1 style="color: #F14C93; font-weight: bold;">SNEKTRAKR</h1>
+
+    <div class="" ng-controller="loginCtrl as lc">
+      <div class="card rounded padding" style="background-color: #1DE7A0;" >
+        <h3 style="text-align: center">LOGIN</h3>
+        <form action="/" method="post" name="lc.loginForm">
+          <label for="email">Email</label>
+          <input type="text" name="email" value="" placeholder="Email" ng-model="loginForm.email">
+          <label for="password">PASSWORD</label>
+          <input type="password" name="password" value="" placeholder="Password" ng-model="loginForm.password">
+          <br>
+          <button style="background-color: green" class="button button-light button-block" type="button" name="login" ng-click="lc.login(loginForm.email, loginForm.password)">Login</button>
+        </form>
+        <h4>or signup here!</h4>
+        <button class="button button-light button-block" type="button" name="signup" ng-click="lc.signup(loginForm.email, loginForm.password)">Signup</button>
+      </div>
+      <div class="padding" >
+        <button style="background-color: red" class="button button-light button-block" type="button" name="logout" ng-click="lc.logout()">Logout</button>
+      </div>
+    </div>
+
+
     <button class="button button-light button-block" style="background-color: orange" type="button" name="edit" ng-click="ac.showEdit = !ac.showEdit;">Update Account Information</button>
     <form class="" method="post" ng-show="ac.showEdit">
       <input type="email" name="email" value="" placeholder="Email" ng-model="ac.account.info.email">
@@ -7,26 +30,6 @@
       <input type="password" name="password" value="" placeholder="Confirm Password" ng-model="ac.account.confirmPassword">
       <button class="button button-light button-block" type="submit" name="update" ng-click="ac.updateAccount(ac.account.info.id, ac.account.info.email, ac.account.confirmPassword)">Update Account</button>
     </form>
-
-    <h2 style="color: #F14C93; font-weight: bold;">SNEKTRAKR5000</h2>
-
-    <div class="card rounded padding" style="background-color: #1DE7A0;" ng-controller="loginCtrl as lc">
-      <h3 style="text-align: center">LOGIN</h3>
-      <form action="/" method="post" name="lc.loginForm">
-        <label for="email">Email</label>
-        <input type="text" name="email" value="" placeholder="Email" ng-model="loginForm.email">
-        <label for="password">PASSWORD</label>
-        <input type="password" name="password" value="" placeholder="Password" ng-model="loginForm.password">
-        <br>
-        <button style="background-color: green" class="button button-light button-block" type="button" name="login" ng-click="lc.login(loginForm.email, loginForm.password)">Login</button>
-      </form>
-      <h4>or signup here!</h4>
-      <button class="button button-light button-block" type="button" name="signup" ng-click="lc.signup(loginForm.email, loginForm.password)">Signup</button>
-
-      <div class="padding" >
-        <button style="background-color: red" class="button button-light button-block" type="button" name="logout" ng-click="lc.logout()">Logout</button>
-      </div>
-    </div>
 
   </ion-content>
 </ion-view>

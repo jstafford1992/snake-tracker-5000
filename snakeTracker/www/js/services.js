@@ -2,26 +2,27 @@
 
 angular.module('snekTrakr.services', [])
 
-.constant("routeToAPI", {
-  "url": "http:10.7.80.106:3000"
-})
-
 // .constant("routeToAPI", {
-//   "url": "http://localhost:3000"
+//   "url": "http:10.7.80.106:3000"
 // })
+
+.constant("routeToAPI", {
+  "url": "http://localhost:3000"
+})
 
 // .constant("routeToAPI", {
 //   "url": "https://snek-trakr.herokuapp.com"
 // })
-.service('LoginService', ['$http', '$window', 'routeToAPI', '$location', '$ionicHistory', function($http, $window, routeToAPI, $location, $ionicHistory){
+.service('LoginService', ['$http', '$window', 'routeToAPI', '$location', '$ionicHistory', '$state', function($http, $window, routeToAPI, $location, $ionicHistory, $state){
   var sv = this;
+
 
   sv.login = function(email, password){
     return new Promise(function(resolve, reject){
       $http.post(routeToAPI.url + '/login', {email: email, password: password})
       .then(function(data) {
         // console.log(data);
-
+        sv.loggedIn = true;
         $window.sessionStorage.token = data.data.token;
         $window.sessionStorage.id = data.data.id;
         $location.path('/tab/snakesList');
@@ -38,11 +39,12 @@ angular.module('snekTrakr.services', [])
   sv.signup = function(email, password){
     $http.post(routeToAPI.url + '/signup', {email: email, password: password})
     .then(function(data){
-      console.log(data);
+
       $window.sessionStorage.token = data.data.token;
-      $window.sessionStorage.token = data.data.id;
-      $ionicHistory.goBack();
-      // $location.path('/tab/snakes');
+      $window.sessionStorage.id = data.data.id;
+      // $state.reload();
+      sv.loggedIn = true;
+      $location.path('/tab/snakesList');
     })
     .catch(function(err){
       console.log(err);
@@ -55,8 +57,13 @@ angular.module('snekTrakr.services', [])
   sv.logout = function(){
     delete $window.sessionStorage.token;
     delete $window.sessionStorage.id;
-    $location.path('/tab/login');
+    sv.loggedIn = false;
+    // console.log(sv.loggedIn);
+    alert('You have logged out!');
+    $state.reload();
   };
+
+  console.log(sv.loggedIn);
 
 }])
 

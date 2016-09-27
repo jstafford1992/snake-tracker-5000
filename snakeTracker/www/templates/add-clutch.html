@@ -2,10 +2,12 @@
   <ion-content class="padding">
     <h1>Add Clutch</h1>
     <form class="" method="post">
-      <select class="" name="dame" ng-model="acc.snake_id">
+      <label for="dam">Dam: </label>
+      <select class="" name="dam" ng-model="acc.snake_id">
         <option ng-repeat="female in acc.snakes.females" value="{{female.id}}">{{female.name}}</option>
       </select>
       <br>
+      <label for="date">Date Layed</label>
       <input type="date" name="date_layed" ng-model="acc.date_layed">
       <br>
       <label for="notes">Notes: </label>
