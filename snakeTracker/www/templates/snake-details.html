@@ -44,7 +44,7 @@
           <button type="button" name="button" ng-click="sdc.deleteFeedingInfo({{feed.id}})"><i class="ion-trash-a"></i></button>
         </div>
       </div>
-      <div class="padding">
+      <div class="padding" ng-hide="sdc.testGroup()">
         <h4>Pairings</h4>
         <button type="button" name="button" class="button" ng-click="sdc.showAddPairing = !sdc.showAddPairing" ng-disabled="sdc.showAddPairing"><i class="icon ion-plus"></i></button>
         <add-pairing-dir ng-show="sdc.showAddPairing"></add-pairing-dir>

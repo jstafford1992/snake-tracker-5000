@@ -21,8 +21,7 @@ angular.module('snekTrakr.controllers', [])
 }])
 
 .controller('snakesCtrl', [ '$scope', 'SnakesService', '$state', function($scope, SnakesService, $state) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
+
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
   //
@@ -88,6 +87,7 @@ angular.module('snekTrakr.controllers', [])
   vm.snakes = SnakesService.snakes;
   // console.log(vm.snakes.males);
   // console.log(vm.snakes.females);
+  // console.log(vm.snakes.notBreeders);
 
   vm.openCamera = function(){
     PictureService.openCamera().then(function(data){
@@ -106,6 +106,19 @@ angular.module('snekTrakr.controllers', [])
 
 
   vm.photo = {};
+
+  // console.log(vm.snake.info.snake.id);
+  vm.testGroup = function(){
+    for(var i = 0; i < vm.snakes.notBreeders.length; i++){
+      // console.log(vm.snakes.notBreeders[i].id);
+      // console.log(vm.snake.info.snake.id);
+      if(vm.snakes.notBreeders[i].id === vm.snake.info.snake.id) {
+        // console.log("inside if");
+        // console.log(vm.snakes.notBreeders[i].id);
+        return true;
+      }
+    }
+  };
 
 
 

@@ -63,7 +63,7 @@ angular.module('snekTrakr.services', [])
     $state.reload();
   };
 
-  console.log(sv.login.loggedIn);
+  // console.log(sv.login.loggedIn);
 
 }])
 
@@ -90,7 +90,7 @@ angular.module('snekTrakr.services', [])
       email: email,
       password: confirmPassword
     }).then(function(data){
-      console.log(data);
+      // console.log(data);
       sv.logout();
       $state.go('tab.account');
 
@@ -122,17 +122,22 @@ angular.module('snekTrakr.services', [])
       sv.snakes.arr = data.data;
       sv.snakes.males = [];
       sv.snakes.females = [];
+      sv.snakes.notBreeders = [];
       for(var i = 0; i < sv.snakes.arr.length; i++){
         if(sv.snakes.arr[i].group === "breeder" && sv.snakes.arr[i].sex === "male"){
           sv.snakes.males.push(sv.snakes.arr[i]);
         } else if (sv.snakes.arr[i].group === "breeder" && sv.snakes.arr[i].sex === "female") {
           sv.snakes.females.push(sv.snakes.arr[i]);
+        } else if (sv.snakes.arr[i].group === "yearling" || sv.snakes.arr[i].group === "hatchling"){
+          sv.snakes.notBreeders.push(sv.snakes.arr[i]);
+
         }
       }
 
       // console.log(sv.snakes.arr);
       // console.log(sv.snakes.males);
       // console.log(sv.snakes.females);
+      // console.log(sv.snakes.notBreeders);
     })
     .catch(function(err){
       console.log(err);
@@ -167,7 +172,7 @@ angular.module('snekTrakr.services', [])
       date_paired: date_paired
     })
     .then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.reload();
     }).catch(function(err){
       console.log(err);
@@ -182,7 +187,7 @@ angular.module('snekTrakr.services', [])
       date_paired: date_paired
     })
     .then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.reload();
     }).catch(function(err){
       console.log(err);
@@ -193,7 +198,7 @@ angular.module('snekTrakr.services', [])
   sv.deleteBreedingInfo = function(id){
     $http.delete(routeToAPI.url + '/breeding/' + id)
     .then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.reload();
     }).catch(function(err){
       console.log(err);
@@ -211,7 +216,7 @@ angular.module('snekTrakr.services', [])
       attempted: attempted,
       amount: amount
     }).then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.reload();
     }).catch(function(err){
       console.log(err);
@@ -222,7 +227,7 @@ angular.module('snekTrakr.services', [])
   sv.deleteFeedingInfo = function(id){
     $http.delete(routeToAPI.url + '/feeding/' + id)
     .then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.reload();
     }).catch(function(err){
       console.log(err);
@@ -235,7 +240,7 @@ angular.module('snekTrakr.services', [])
     $http.post(routeToAPI.url + '/weight', {
       snake_id: sv.snake.info.snake.id, weight: weight, date_weighed: date_weighed})
       .then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.reload();
     }).catch(function(err){
       console.log(err);
@@ -246,7 +251,7 @@ angular.module('snekTrakr.services', [])
   sv.deleteWeightInfo = function(id){
     $http.delete(routeToAPI.url + '/weight/' + id)
     .then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.reload();
     }).catch(function(err){
       console.log(err);
@@ -260,7 +265,7 @@ angular.module('snekTrakr.services', [])
       snake_id: sv.snake.info.snake.id,
       date_shed: date_shed
     }).then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.reload();
     }).catch(function(err){
       console.log(err);
@@ -271,7 +276,7 @@ angular.module('snekTrakr.services', [])
   sv.deleteShedInfo = function(id){
     $http.delete(routeToAPI.url + '/shed/' + id)
     .then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.reload();
     }).catch(function(err){
       console.log(err);
@@ -283,7 +288,7 @@ angular.module('snekTrakr.services', [])
   sv.deleteSnake = function(id){
     $http.delete(routeToAPI.url + '/snakes/' + id)
     .then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.go('tab.snakesList');
     }).catch(function(err){
       console.log(err);
@@ -302,7 +307,7 @@ angular.module('snekTrakr.services', [])
       group: group,
       image_url: image_url
     }).then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.reload();
     }).catch(function(err){
       console.log(err);
@@ -361,7 +366,7 @@ angular.module('snekTrakr.services', [])
       url: url,
       image_url: image_url
     }).then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.go('tab.snakesList');
     }).catch(function(err){
       console.log(err);
@@ -413,7 +418,7 @@ angular.module('snekTrakr.services', [])
       number_hatched: number_hatched,
       image_url: image_url
     }).then(function(data){
-      console.log(data);
+      // console.log(data);
       // $state.reload();
       $state.go('tab.clutches');
     }).catch(function(err){
@@ -424,7 +429,7 @@ angular.module('snekTrakr.services', [])
   sv.deleteClutch = function(id){
     $http.delete(routeToAPI.url + '/clutches/' + id)
     .then(function(data){
-      console.log(data);
+      // console.log(data);
       $state.go('tab.clutches');
     }).catch(function(err){
       console.log(err);
@@ -434,7 +439,7 @@ angular.module('snekTrakr.services', [])
 
   sv.addClutch = function(snake_id, notes, date_layed, number_layed, bad_eggs, image_url){
     // "bad_eggs", "date_layed", "notes", "number_hatched", "number_layed", "snake_id"
-    console.log(notes);
+    // console.log(notes);
     $http.post(routeToAPI.url + '/clutches/new', {
       snake_id: snake_id,
       notes: notes,
@@ -443,7 +448,7 @@ angular.module('snekTrakr.services', [])
       bad_eggs: bad_eggs,
       image_url: image_url
     }).then(function(data){
-      console.log(data);
+      // console.log(data);
 
       $state.go('tab.clutches');
     }).catch(function(err){
@@ -468,7 +473,7 @@ angular.module('snekTrakr.services', [])
     },
     response: function(response){
       if(response.status === 404){
-        console.log(response);
+        // console.log(response);
       }
       return response || $q.when(response);
     }
@@ -529,7 +534,7 @@ angular.module('snekTrakr.services', [])
 
 
     return $cordovaCamera.getPicture(options).then(function(data){
-      console.log(data);
+      // console.log(data);
       sv.photo.image_url = data;
       return data;
     });
@@ -561,7 +566,7 @@ angular.module('snekTrakr.services', [])
       // }
 
       return $cordovaCamera.getPicture(options).then(function(data){
-        console.log(data);
+        // console.log(data);
         sv.photo.image_url = data;
         return data;
       });
