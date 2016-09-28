@@ -11,4 +11,4 @@ cd ..
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore snekTrakr.keystore $BUILDAPK snekTrakr
 
 #zipalign
-$ZIPALIGN -v 4 $BUILDAPK snekTrakr.apk
+$ZIPALIGN -v 4 $BUILDAPK snekTrakr2.apk

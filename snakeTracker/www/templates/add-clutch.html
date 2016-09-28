@@ -7,6 +7,7 @@
         <option ng-repeat="female in acc.snakes.females" value="{{female.id}}">{{female.name}}</option>
       </select>
       <br>
+      <br>
       <label for="date">Date Layed</label>
       <input type="date" name="date_layed" ng-model="acc.date_layed">
       <br>
@@ -16,8 +17,10 @@
       <br>
       <label for="eggs_layed">Number of Eggs Layed</label>
       <input type="number" name="eggs_layed"  ng-model="acc.eggs_layed">
+      <br>
       <label for="bad_eggs">Infertile Eggs</label>
       <input type="number" name="bad_eggs"  ng-model="acc.bad_eggs">
+      <br>
       <!-- <label for="Number of Eggs Hatched">Eggs Hatched</label>
       <input type="number" name="eggs_hatched" value=""> -->
       <div class="">
@@ -25,8 +28,10 @@
         <input ng-src="acc.photo.image_url" type="text" name="image_url" value="">
         <!-- <img ng-src="acc.photo.image_url" alt="add-clutch-image" height="150px" width="150px"/> -->
         <br>
-        <button type="button" name="button" ng-click="acc.openCamera()">TAKE A PICTURE</button>
-        <button type="button" name="button" ng-click="acc.openFilePicker()">Open A Gallery</button>
+        <div class="button-bar">
+          <button class="button button-light" type="button" name="button" ng-click="acc.openCamera()">TAKE A PICTURE</button>
+          <button class="button button-stable" type="button" name="button" ng-click="acc.openFilePicker()">Open A Gallery</button>
+        </div>
       </div>
       <button class="button button-light button-block" type="submit" name="submit" ng-click="acc.addClutch(acc.snake_id,  acc.notes, acc.date_layed, acc.eggs_layed, acc.bad_eggs, acc.photo.image_url)">Add New Clutch</button>
     </form>

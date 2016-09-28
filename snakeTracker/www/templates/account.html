@@ -8,9 +8,10 @@
         <h3 style="text-align: center">LOGIN</h3>
         <form action="/" method="post" name="lc.loginForm">
           <label for="email">EMAIL</label>
-          <input type="text" name="email" value="" placeholder="Email" ng-model="loginForm.email">
+          <input type="email" name="email" value="" placeholder="Email" ng-model="loginForm.email" required="" >
           <label for="password">PASSWORD</label>
-          <input type="password" name="password" value="" placeholder="Password" ng-model="loginForm.password">
+          <input type="password" name="password" value="" placeholder="Password" ng-model="loginForm.password" required="" ng-minlength="5">
+          <span ng-show="lc.loginForm.email.$touched && lc.loginForm.password.$invalid">The Email and/or Password is invalid.</span>
           <br>
           <button class="button button-light button-block" type="button" name="login" ng-click="lc.login(loginForm.email, loginForm.password)">Login</button>
         </form>

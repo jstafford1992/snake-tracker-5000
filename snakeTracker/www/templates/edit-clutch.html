@@ -8,21 +8,27 @@
         <option ng-repeat="female in ecc.snakes.females" value="female.id">{{female.name}}</option>
       </select>
       <br>
+      <br>
       <h4>Date Layed: {{ecc.clutch.info.date_layed | date }}</h4>
       <input type="date" name="date_layed" value="" placeholder="Date Layed" ng-model="ecc.clutch.info.date_layed">
 
       <h4>Notes: </h4>
       <textarea name="name" rows="5" cols="25" value="{{ecc.clutch.info.notes}}" ng-model="ecc.clutch.info.notes"></textarea>
+      <br>
       <label for="eggs_layed">Number of Eggs Layed</label>
       <input type="number" name="number_layed" ng-model="ecc.clutch.info.number_layed">
+      <br>
       <label for="bad_eggs">Infertile Eggs</label>
       <input type="number" name="bad_eggs" ng-model="ecc.clutch.info.bad_eggs">
+      <br>
       <label for="Number of Eggs Hatched">Eggs Hatched</label>
       <input type="number" name="eggs_hatched" ng-model="ecc.clutch.info.number_hatched">
-      <div class="">
-        <button type="button" name="button" ng-click="ecc.openCamera()">TAKE A PICTURE</button>
-        <button type="button" name="button" ng-click="ecc.openFilePicker()">Open A Gallery</button>
+      <br>
+      <div class="button-bar">
+        <button class="button button-light" type="button" name="button" ng-click="ecc.openCamera()">TAKE A PICTURE</button>
+        <button class="button button-stable" type="button" name="button" ng-click="ecc.openFilePicker()">Open A Gallery</button>
       </div>
+      <br>
       <input type="text" name="img_url" value="" placeholder="Image URL" ng-model="ecc.photo.image_url">
 
       <button class="button button-light button-block ion-plus-round" type="submit" name="submit" ng-click="ecc.updateClutch(ecc.clutch.info.id, ecc.clutch.info.snake_id, ecc.clutch.info.date_layed, ecc.clutch.info.notes, ecc.clutch.info.number_layed, ecc.clutch.info.bad_eggs, ecc.clutch.info.number_hatched, ecc.photo.image_url)">Edit Clutch</button>

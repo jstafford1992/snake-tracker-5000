@@ -4,8 +4,10 @@
       <option value="male">Male</option>
       <option value="female">Female</option>
     </select>
+    <br>
     <label for="hatch_year">Hatch Year</label>
     <input type="date" name="hatch_year" ng-model="sdc.snake.info.snake.year_hatched">
+    <br>
     <label for="age">Group</label>
     <select class="" name="age" ng-model="sdc.snake.info.snake.group">
       <option value="breeder">Breeder</option>
@@ -13,13 +15,16 @@
       <option value="hatchling">Hatchling</option>
     </select>
     <br>
+    <br>
     <textarea name="notes" rows="5" cols="30" value="{{sdc.snake.info.snake.notes}}" ng-model="sdc.snake.info.snake.notes"></textarea>
-    <div class="">
-      <button type="button" name="button" ng-click="sdc.openCamera()">TAKE A PICTURE</button>
-      <button type="button" name="button" ng-click="sdc.openFilePicker()">Open A Gallery</button>
+    <br>
+    <div class="button-bar">
+      <button class="button button-light" type="button" name="button" ng-click="sdc.openCamera()">TAKE A PICTURE</button>
+      <button class="button button-stable" type="button" name="button" ng-click="sdc.openFilePicker()">Open A Gallery</button>
     </div>
+    <br>
     <input type="text" name="img_url" value="" placeholder="Image URL" ng-model="sdc.photo.image_url">
     <button class="button button-light button-block" type="button" name="submit" ng-click="sdc.updateSnake(sdc.snake.info.snake.id, sdc.snake.info.snake.name, sdc.snake.info.snake.notes, sdc.snake.info.snake.sex, sdc.snake.info.snake.year_hatched, sdc.snake.info.snake.group, sdc.photo.image_url)">Edit Snake</button>
-    <button type="button" name="button" ng-click="sdc.deleteSnake(sdc.snake.info.snake.id)"><i class="ion-trash-a"></i></button>
+    <button type="button" name="button" ng-click="sdc.deleteSnake(sdc.snake.info.snake.id)"><i class="ion-trash-a"> Delete Snake</i></button>
     <button ng-click="sdc.showEditSnake = !sdc.showEditSnake" class="button button-stable button-block">Close</button>
   </form>

@@ -10,6 +10,7 @@
         <option value="female">Female</option>
       </select>
       <br>
+      <br>
       <label for="hatch_year">Hatch Year</label>
       <input type="date" name="hatch_year" ng-model="asc.hatch_year">
       <br>
@@ -19,14 +20,18 @@
         <option value="yearling">Yearling</option>
         <option value="hatchling">Hatchling</option>
       </select>
+      <br>
+      <br>
       <div class="">
         <label for="notes">Notes:</label>
         <textarea name="notes" rows="5" cols="25" ng-model="asc.notes"></textarea>
       </div>
-      <div class="">
-        <button type="button" name="button" ng-click="asc.openCamera()">TAKE A PICTURE</button>
-        <button type="button" name="button" ng-click="asc.openFilePicker()">Open A Gallery</button>
+      <br>
+      <div class="button-bar">
+        <button class="button button-light" type="button" name="button" ng-click="asc.openCamera()">TAKE A PICTURE</button>
+        <button class="button button-stable" type="button" name="button" ng-click="asc.openFilePicker()">Open A Gallery</button>
       </div>
+      <br>
       <!-- <input type="text" name="url" value="" placeholder="URL" ng-model="asc.url"> -->
       <input type="text" name="img_url" value="" placeholder="Image URL" ng-model="asc.photo.image_url">
       <button class="button button-light button-block ion-plus-round" type="submit" name="submit" ng-click="asc.newSnake(asc.name, asc.sex, asc.hatch_year, asc.group, asc.notes, asc.url, asc.photo.image_url)">Add Snake!</button>
