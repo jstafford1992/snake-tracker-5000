@@ -1,9 +1,13 @@
   <form class="" method="post">
+    <label for="name">Name</label>
     <input type="text" name="name" ng-model="sdc.snake.info.snake.name" placeholder="Snake Name/Identifier">
+    <br>
+    <label for="gender">Gender</label>
     <select class="" name="gender" ng-model="sdc.snake.info.snake.sex">
       <option value="male">Male</option>
       <option value="female">Female</option>
     </select>
+    <br>
     <br>
     <label for="hatch_year">Hatch Year</label>
     <input type="date" name="hatch_year" ng-model="sdc.snake.info.snake.year_hatched">
