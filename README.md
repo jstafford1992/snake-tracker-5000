@@ -22,3 +22,7 @@ If unfamiliar with the how Ionic is structured the folder you are looking for is
 ```bash
 npm install
 ```
+
+
+#Ionic Docs Link
+https://ionicframework.com/docs/
