@@ -19,4 +19,6 @@ If unfamiliar with the how Ionic is structured the folder you are looking for is
 
 
 #Installation
-'''npm install -g cordova ionic'''
+```bash
+npm install
+```
